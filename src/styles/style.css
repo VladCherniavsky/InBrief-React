@@ -12,3 +12,6 @@ a.active {
 nav {
     padding-top: 20px;
 }
+.ui.secondary.pointing.menu .item {
+    font-size: 1.2em !important;
+}
