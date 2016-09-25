@@ -7,8 +7,6 @@ import toastr from 'toastr';
 
 class ManageCoursePage extends  React.Component {
     constructor(props, context) {
-        console.log('constructor------I, first');
-        console.log('props', props);
         super(props, context);
         this.state = {
             course: Object.assign({}, props.course),
@@ -78,11 +76,9 @@ function getCourseById(courses, courseId) {
 
 function mapStateToProps(state, ownProps) {
     let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
-    console.log('mapStateToProps------I, first', state);
     const courseId = ownProps.params.id;
 
     if (courseId && state.courses.length > 0) {
-        console.log('--------------courses', state.courses.length);
         course = getCourseById(state.courses, courseId);
     }
 
