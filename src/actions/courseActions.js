@@ -12,6 +12,12 @@ export function updateCourseSuccess(course) {
 export function createCourseSuccess(course) {
     return {type: types.CREATE_COURSE_SUCCESS, course};
 }
+export function logout() {
+    return {type: types.LOGOUT};
+}
+export function login() {
+    return {type: types.LOGIN};
+}
 
 export function loadCourses() {
     return function(dispatch) {

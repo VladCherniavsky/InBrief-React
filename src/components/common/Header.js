@@ -1,22 +1,23 @@
 import  React, {PropTypes} from 'react';
 import {Link, IndexLink} from 'react-router';
 import LoadingDots from './LoadingDots';
+import AuthButton from './AuthButton'
 
-const Header = ({loading}) => {
+const Header = ({loading, logout, login, isLogged}) => {
     return (
         <div>
             <div className="ui secondary pointing menu">
+
                 <IndexLink to="/" activeClassName="active" className="item">Home</IndexLink>
                 <Link to="/about" activeClassName="active" className="item">About</Link>
-                <Link to="/courses" activeClassName="active" className="item">Courses</Link>
+                {isLogged && <Link to="/courses" activeClassName="active" className="item">Courses</Link>}
+
 
                 {loading && <LoadingDots interval={100} dots={20}/>}
 
-                <div className="right menu">
-                    <a className="ui item">
-                        Logout
-                    </a>
-                </div>
+                {isLogged
+                    ? <AuthButton title="Logout" onClick={logout}/>
+                    : <AuthButton title="Login" onClick={login}/>}
             </div>
             <div className="ui segment">
                 <p></p>
@@ -25,7 +26,10 @@ const Header = ({loading}) => {
     );
 };
 Header.propTypes = {
-    loading: PropTypes.bool.isRequired
+    loading: PropTypes.bool.isRequired,
+    logout: PropTypes.func,
+    isLogged: PropTypes.bool,
+    login: PropTypes.func
 };
 
 export  default Header;
