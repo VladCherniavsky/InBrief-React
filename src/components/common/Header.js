@@ -8,7 +8,7 @@ const Header = ({loading, logout, login, isLogged}) => {
         <div>
             <div className="ui secondary pointing menu">
 
-                <IndexLink to="/" activeClassName="active" className="item">Home</IndexLink>
+                <IndexLink to="/home" activeClassName="active" className="item">Home</IndexLink>
                 <Link to="/about" activeClassName="active" className="item">About</Link>
                 {isLogged && <Link to="/courses" activeClassName="active" className="item">Courses</Link>}
 
