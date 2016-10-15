@@ -1,6 +1,7 @@
 /**
  * Created by vlad on 9/25/2016.
  */
+import dbConnection from './libs/mongoose';
 import express from 'express';
 import webpack from 'webpack';
 import compression from 'compression';
