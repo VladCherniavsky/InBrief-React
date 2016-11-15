@@ -2,5 +2,5 @@ export default  {
     authors: [],
     courses: [],
     ajaxCallInProgress: 0,
-    isLogged: true
+    isLogged: false
 };

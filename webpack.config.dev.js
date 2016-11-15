@@ -51,6 +51,7 @@ export default {
             },
             {
                 test: /\.scss$/,
+                include: path.join(__dirname, 'src'),
                 loaders: ["style", "css", "sass"]
             }
         ]

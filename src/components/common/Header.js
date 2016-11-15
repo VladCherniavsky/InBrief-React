@@ -4,6 +4,15 @@ import LoadingDots from './LoadingDots';
 import AuthButton from './AuthButton'
 
 const Header = ({loading, logout, login, isLogged}) => {
+
+    const loginBtn = () => {
+        return (
+            <div className="right menu">
+                <Link to="/login" activeClassName="active" className="item">Login</Link>
+            </div>
+        );
+    };
+
     return (
         <div>
             <div className="ui secondary pointing menu">
@@ -17,7 +26,7 @@ const Header = ({loading, logout, login, isLogged}) => {
 
                 {isLogged
                     ? <AuthButton title="Logout" onClick={logout}/>
-                    : <AuthButton title="Login" onClick={login}/>}
+                    : loginBtn() }
             </div>
             <div className="ui segment">
                 <p></p>
