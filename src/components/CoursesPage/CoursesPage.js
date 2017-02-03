@@ -1,4 +1,4 @@
-import React, {PropTypes} from  'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseAction from '../../actions/courseActions';
@@ -18,19 +18,22 @@ class CoursesPage extends React.Component {
         browserHistory.push('/course');
     }
 
-    render () {
+    render() {
         return (
             <div>
                 <h1>Courses</h1>
-                <input type="submit" value="Add Course" className="btn btn-primary" onClick={this.redirectToAddCoursePage}/>
+                <input type="submit"
+                       value="Add Course"
+                       className="btn btn-primary"
+                       onClick={this.redirectToAddCoursePage}/>
                 <CourseList courses={this.props.courses}/>
             </div>
         );
     }
 }
 CoursesPage.propTypes = {
-    courses: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    courses: React.PropTypes.array.isRequired,
+    actions: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

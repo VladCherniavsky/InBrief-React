@@ -1,5 +1,5 @@
-import React, {PropTypes} from 'react';
-import  {Link} from 'react-router';
+import React from 'react';
+import {Link} from 'react-router';
 
 const CourseListRow = ({course}) => {
     return (
@@ -14,7 +14,7 @@ const CourseListRow = ({course}) => {
 };
 
 CourseListRow.propTypes = {
-    course: PropTypes.object.isRequired
+    course: React.PropTypes.object.isRequired
 };
 
 export default CourseListRow;

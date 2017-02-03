@@ -22,9 +22,9 @@ export function login() {
 export function loadCourses() {
     return function(dispatch) {
         dispatch(beginAjaxCall());
-        return courseApi.getAllCourses().then(courses => {
+        return courseApi.getAllCourses().then((courses) => {
             dispatch(loadCourseSuccess(courses));
-        }).catch(error => {
+        }).catch((error) => {
             throw(error);
         });
     };
@@ -33,10 +33,10 @@ export function loadCourses() {
 export function saveCourse(course) {
     return function(dispatch) {
         dispatch(beginAjaxCall());
-        return courseApi.saveCourse(course).then(course => {
+        return courseApi.saveCourse(course).then((course) => {
             course.id ? dispatch(updateCourseSuccess(course)) :
                 dispatch(createCourseSuccess(course));
-        }).catch(error => {
+        }).catch((error) => {
             dispatch(ajaxCallError());
             throw(error);
         });

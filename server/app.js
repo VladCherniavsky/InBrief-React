@@ -5,7 +5,7 @@ import dbConnection from './libs/mongoose';
 import express from 'express';
 import webpack from 'webpack';
 import compression from 'compression';
-import webpackMiddleware  from './middlewares/webpackMiddleware';
+import webpackMiddleware from './middlewares/webpackMiddleware';
 import path from 'path';
 import config from './configuration';
 import webpackConfig from '../webpack.config.index';
@@ -25,4 +25,7 @@ app.use(express.static(path.join(__dirname, config.get('static'))));
 app.use('/api', routers);
 app.get('*', common.sendIndexHtml);
 app.use(common.errorHandler);
-app.listen(config.get('port'), common.listen);
+dbConnection.once('open', () => {
+    app.listen(config.get('port'), common.listen);
+});
+

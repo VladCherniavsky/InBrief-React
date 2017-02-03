@@ -7,7 +7,7 @@ export default {
     noInfo: false,
     entry: [
         'eventsource-polyfill', // necessary for hot reloading with IE
-        'webpack-hot-middleware/client?reload=true', //note that it reloads the page if hot module reloading fails.
+        'webpack-hot-middleware/client?reload=true', // note that it reloads the page if hot module reloading fails.
         './src/index'
     ],
     target: 'web',
@@ -52,7 +52,7 @@ export default {
             {
                 test: /\.scss$/,
                 include: path.join(__dirname, 'src'),
-                loaders: ["style", "css", "sass"]
+                loaders: ['style', 'css', 'sass']
             }
         ]
     }

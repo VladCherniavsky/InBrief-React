@@ -7,7 +7,7 @@ import CoursesPage from './components/CoursesPage/CoursesPage';
 import ManageCoursePage from './components/CoursesPage/ManageCoursePage';
 import LoginPage from './components/LoginPage/LoginPage';
 
-export  default (
+export default (
     <div>
         <Redirect from="/" to="/home" />
         <Route path="/" component={App}>
@@ -21,6 +21,4 @@ export  default (
         <Route path="login" component={LoginPage}/>
 
     </div>
-
-
 );

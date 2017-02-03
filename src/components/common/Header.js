@@ -1,14 +1,15 @@
-import  React, {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import {Link, IndexLink} from 'react-router';
 import LoadingDots from './LoadingDots';
-import AuthButton from './AuthButton'
+import AuthButton from './AuthButton';
 
 const Header = ({loading, logout, login, isLogged}) => {
-
     const loginBtn = () => {
         return (
             <div className="right menu">
-                <Link to="/login" activeClassName="active" className="item">Login</Link>
+                <Link to="/login"
+                      activeClassName="active"
+                      className="item">Login</Link>
             </div>
         );
     };
@@ -17,9 +18,18 @@ const Header = ({loading, logout, login, isLogged}) => {
         <div>
             <div className="ui secondary pointing menu">
 
-                <IndexLink to="/home" activeClassName="active" className="item">Home</IndexLink>
-                <Link to="/about" activeClassName="active" className="item">About</Link>
-                {isLogged && <Link to="/courses" activeClassName="active" className="item">Courses</Link>}
+                <IndexLink to="/home"
+                           activeClassName="active"
+                           className="item">Home
+                </IndexLink>
+
+                <Link to="/about"
+                      activeClassName="active"
+                      className="item">About
+                </Link>
+                {isLogged && <Link to="/courses"
+                                   activeClassName="active"
+                                   className="item">Courses</Link>}
 
 
                 {loading && <LoadingDots interval={100} dots={20}/>}
@@ -41,4 +51,4 @@ Header.propTypes = {
     login: PropTypes.func
 };
 
-export  default Header;
+export default Header;

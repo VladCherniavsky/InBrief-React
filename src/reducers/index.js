@@ -2,9 +2,9 @@ import {combineReducers} from 'redux';
 import courses from './courseReducer';
 import authors from './authorReducer';
 import ajaxCallsInProgress from './ajaxStatusReducer';
-import isLogged from './authReducer'
+import isLogged from './authReducer';
 
-const  rootReducer = combineReducers({
+const rootReducer = combineReducers({
     courses, authors, ajaxCallsInProgress, isLogged
 });
 

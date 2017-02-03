@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 
 class LoadingDots extends React.Component {
     constructor(props, context) {
@@ -9,7 +9,7 @@ class LoadingDots extends React.Component {
 
     componentDidMount() {
         this.interval = setInterval(() => {
-            this.setState({ //eslint-disable-line react/no-did-mount-set-state
+            this.setState({ // eslint-disable-line react/no-did-mount-set-state
                 frame: this.state.frame + 1
             });
         }, this.props.interval);
@@ -26,7 +26,7 @@ class LoadingDots extends React.Component {
             text += '.';
             dots--;
         }
-        return <span {...this.props}>{text}&nbsp;</span>
+        return <span {...this.props}>{text}&nbsp;</span>;
     }
 }
 
@@ -35,8 +35,8 @@ LoadingDots.defaultProps = {
 };
 
 LoadingDots.proptypes = {
-    interval: PropTypes.number,
-    dots: PropTypes.number
+    interval: React.PropTypes.number,
+    dots: React.PropTypes.number
 };
 
 export default LoadingDots;

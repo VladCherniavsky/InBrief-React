@@ -1,24 +1,23 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import Header from './common/Header';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../actions/courseActions';
 
 class App extends React.Component {
-    logout () {
+    logout() {
         this.props.actions.logout();
     }
-    login () {
+    login() {
         this.props.actions.login();
     }
-    render () {
-        console.log(this.props.isLogged);
+    render() {
         return (
             <div>
                 <Header
                     loading={this.props.loading}
-                    logout={()=> {this.logout()}}
-                    login={() => {this.login()}}
+                    logout={() => this.logout()}
+                    login={() => this.login()}
                     isLogged={this.props.isLogged}/>
                 <div className="container-fluid">
                     {this.props.children}
