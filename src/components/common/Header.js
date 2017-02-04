@@ -1,51 +1,76 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes, Component} from 'react';
 import {Link, IndexLink} from 'react-router';
-import LoadingDots from './LoadingDots';
 import AuthButton from './AuthButton';
+import AppBar from 'material-ui/AppBar';
+import NavigationClose from 'material-ui/svg-icons/action/home';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import FlatButton from 'material-ui/FlatButton';
 
-const Header = ({loading, logout, login, isLogged}) => {
-    const loginBtn = () => {
+
+
+class Login extends Component {
+    static muiName = 'FlatButton';
+
+    render() {
         return (
-            <div className="right menu">
-                <Link to="/login"
-                      activeClassName="active"
-                      className="item">Login</Link>
-            </div>
+            <FlatButton {...this.props} label="Login" />
         );
+    }
+}
+
+const Logged = (props) => (
+    <IconMenu
+        {...props}
+        iconButtonElement={
+            <IconButton><MoreVertIcon /></IconButton>
+        }
+        targetOrigin={{horizontal: 'right', vertical: 'top'}}
+        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+    >
+        <MenuItem primaryText="Refresh" />
+        <MenuItem primaryText="Help" />
+        <MenuItem primaryText="Sign out" />
+    </IconMenu>
+);
+
+Logged.muiName = 'IconMenu';
+
+class Header extends Component {
+
+    state = {
+        logged: true,
     };
 
-    return (
-        <div>
-            <div className="ui secondary pointing menu">
-
-                <IndexLink to="/home"
-                           activeClassName="active"
-                           className="item">Home
-                </IndexLink>
-
-                <Link to="/about"
-                      activeClassName="active"
-                      className="item">About
-                </Link>
-                {isLogged && <Link to="/courses"
-                                   activeClassName="active"
-                                   className="item">Courses</Link>}
-
-
-                {loading && <LoadingDots interval={100} dots={20}/>}
-
-                {isLogged
-                    ? <AuthButton title="Logout" onClick={logout}/>
-                    : loginBtn() }
+    handleChange = (event, logged) => {
+        this.setState({logged: logged});
+    };
+    // const loginBtn = () => {
+    //     return (
+    //         <div className="right menu">
+    //             <Link to="/login"
+    //                   activeClassName="active"
+    //                   className="item">Login</Link>
+    //         </div>
+    //     );
+    // };
+    render() {
+        return (
+            <div>
+                <AppBar
+                    title="InBrief"
+                    iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+                    iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    iconElementRight={this.state.logged ? <Logged /> : <Login />}/>
             </div>
-            <div className="ui segment">
-                <p></p>
-            </div>
-        </div>
-    );
+        );
+    }
+
+
 };
 Header.propTypes = {
-    loading: PropTypes.bool.isRequired,
     logout: PropTypes.func,
     isLogged: PropTypes.bool,
     login: PropTypes.func

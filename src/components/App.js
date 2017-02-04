@@ -15,7 +15,6 @@ class App extends React.Component {
         return (
             <div>
                 <Header
-                    loading={this.props.loading}
                     logout={() => this.logout()}
                     login={() => this.login()}
                     isLogged={this.props.isLogged}/>
