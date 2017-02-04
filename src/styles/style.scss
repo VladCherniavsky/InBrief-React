@@ -1,17 +1,13 @@
-#App {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #4d4d4d;
-  min-width: 550px;
-  max-width: 550px;
-  margin: 0 auto;
-}
+@import "../components/common/styles/style";
+@import "../components/LoginPage/style";
 
-a.active {
-  color: orange;
-}
-nav {
-  padding-top: 20px;
-}
-.ui.secondary.pointing.menu .item {
-  font-size: 1.2em !important;
+html, body
+{
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    #app {
+        height: 100%;
+    }
 }

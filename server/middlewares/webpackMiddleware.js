@@ -8,4 +8,4 @@ export default (app, compiler, webpackConfig) => {
         publicPath: webpackConfig.output.publicPath
     }));
     app.use(require('webpack-hot-middleware')(compiler));
-}
+};

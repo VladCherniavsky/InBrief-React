@@ -1,11 +1,11 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import toastr from 'toastr';
 
-class ManageCoursePage extends  React.Component {
+class ManageCoursePage extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -35,7 +35,7 @@ class ManageCoursePage extends  React.Component {
         this.setState({saving: true});
         this.props.actions.saveCourse(this.state.course)
             .then(() => this.redirect())
-            .catch(error => {
+            .catch((error) => {
                 this.setState({saving: false});
                 toastr.error(error);
             });
@@ -60,32 +60,39 @@ class ManageCoursePage extends  React.Component {
 }
 
 ManageCoursePage.propTypes = {
-    course: PropTypes.object.isRequired,
-    authors: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    course: React.PropTypes.object.isRequired,
+    authors: React.PropTypes.array.isRequired,
+    actions: React.PropTypes.object.isRequired
 };
 
 ManageCoursePage.contextTypes = {
-    router: PropTypes.object.isRequired
+    router: React.PropTypes.object.isRequired
 };
 
 function getCourseById(courses, courseId) {
-    const course = courses.filter(course => course.id === courseId);
+    const course = courses.filter((course) => course.id === courseId);
     return course ? course[0] : null;
 }
 
 function mapStateToProps(state, ownProps) {
-    let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
+    let course = {
+        id: '',
+        watchHref: '',
+        title: '',
+        authorId: '',
+        length: '',
+        category: ''
+    };
     const courseId = ownProps.params.id;
 
     if (courseId && state.courses.length > 0) {
         course = getCourseById(state.courses, courseId);
     }
 
-    const authorsFormattedForDropdown = state.authors.map(author => {
+    const authorsFormattedForDropdown = state.authors.map((author) => {
         return {
             value: author.id,
-            text: author.firstName  + ' ' + author.lastName
+            text: author.firstName + ' ' + author.lastName
         };
     });
     return {

@@ -1,5 +1,5 @@
-import React, {PropTypes} from 'react';
-import  CourseListRow from './CourseListRow';
+import React from 'react';
+import CourseListRow from './CourseListRow';
 
 const CourseList = ({courses}) => {
     return (
@@ -14,7 +14,7 @@ const CourseList = ({courses}) => {
             </tr>
             </thead>
             <tbody>
-            {courses.map(course =>
+            {courses.map((course) =>
                 <CourseListRow key={course.id} course={course}/>
             )}
             </tbody>
@@ -22,7 +22,7 @@ const CourseList = ({courses}) => {
     );
 };
 CourseList.propTypes = {
-    courses: PropTypes.array.isRequired
+    courses: React.PropTypes.array.isRequired
 };
 
 export default CourseList;
