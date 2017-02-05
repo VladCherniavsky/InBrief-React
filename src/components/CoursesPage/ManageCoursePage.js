@@ -6,7 +6,7 @@ import CourseForm from './CourseForm';
 import toastr from 'toastr';
 
 class ManageCoursePage extends React.Component {
-    constructor(props, context) {
+    constructor(props, c) {
         super(props, context);
         this.state = {
             course: Object.assign({}, props.course),

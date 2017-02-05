@@ -8,7 +8,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
-
+import Drawer from './drawer';
 
 
 class Login extends Component {
@@ -28,8 +28,8 @@ const Logged = (props) => (
             <IconButton><MoreVertIcon /></IconButton>
         }
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-    >
+        anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
+
         <MenuItem primaryText="Refresh" />
         <MenuItem primaryText="Help" />
         <MenuItem primaryText="Sign out" />
@@ -41,7 +41,7 @@ Logged.muiName = 'IconMenu';
 class Header extends Component {
 
     state = {
-        logged: true,
+        logged: true
     };
 
     handleChange = (event, logged) => {
@@ -61,15 +61,20 @@ class Header extends Component {
             <div>
                 <AppBar
                     title="InBrief"
-                    iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-                    iconClassNameRight="muidocs-icon-navigation-expand-more"
-                    iconElementRight={this.state.logged ? <Logged /> : <Login />}/>
+                    iconElementLeft={ <Drawer />}
+                    iconElementRight={
+                        this.state.logged
+                            ? <Logged />
+                            : <Login />}>
+                </AppBar>
+                <Drawer/>
+
             </div>
         );
     }
 
 
-};
+}
 Header.propTypes = {
     logout: PropTypes.func,
     isLogged: PropTypes.bool,
