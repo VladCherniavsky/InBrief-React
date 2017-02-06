@@ -11,7 +11,7 @@ import {loadAuthors} from './actions/authorActions';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {deepOrange500} from 'material-ui/styles/colors';
+import {deepOrange500, deepPurple800} from 'material-ui/styles/colors';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
@@ -21,6 +21,9 @@ import './styles/style.scss';
 const muiTheme = getMuiTheme({
     palette: {
         accent1Color: deepOrange500
+    },
+    appBar: {
+        color: deepPurple800
     }
 });
 

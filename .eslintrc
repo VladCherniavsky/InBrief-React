@@ -34,37 +34,11 @@
             "ignoreTemplateLiterals": true,
             "ignoreTrailingComments": true,
             "ignoreUrls": true
-        }],/*
-        "no-console":1,
-        "no-undef": 1,*/
+        }],
+        "no-invalid-this": 0,
         "new-cap": ["error", {
             "properties": false
         }],
         "require-jsdoc": 0
-        //    "require-jsdoc": [
-        //      "error",
-        //      {
-        //        "require": {
-        //          "FunctionDeclaration": true,
-        //          "MethodDefinition": true,
-        //          "ClassDeclaration": true
-        //        }
-        //      }
-        //    ],
-        //    "valid-jsdoc": [
-        //      "error",
-        //      {
-        //        "requireReturnDescription": true,
-        //        "requireParamDescription": true,
-        //        "requireReturnType": true,
-        //        "prefer": {
-        //          "arg": "param",
-        //          "argument": "param",
-        //          "class": "constructor",
-        //          "return": "returns",
-        //          "virtual": "abstract"
-        //        }
-        //      }
-        //    ]
     }
 }

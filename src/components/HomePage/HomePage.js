@@ -3,7 +3,6 @@ import {Link} from 'react-router';
 import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import AppBar from 'material-ui/AppBar';
 const style = {
     display: 'inline-block',
     margin: '16px 32px 16px 0'

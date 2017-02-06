@@ -52,7 +52,13 @@ export default {
             {
                 test: /\.scss$/,
                 include: path.join(__dirname, 'src'),
-                loaders: ['style', 'css', 'sass']
+                loaders: ['style',
+                    'css?modules&importLoaders=1&localIdentName=cm-[local]___[hash:base64:5]',
+                    'sass']
+            },
+            { test: /\.(png|jpg|jpeg)$/,
+                exclude: /(node_modules)/,
+                loader: "file?[path][name].[ext]"
             }
         ]
     }

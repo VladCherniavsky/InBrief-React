@@ -1,22 +1,28 @@
 import React, {PropTypes, Component} from 'react';
-import {Link, IndexLink} from 'react-router';
-import AuthButton from './AuthButton';
+// import {Link, IndexLink} from 'react-router';
 import AppBar from 'material-ui/AppBar';
-import NavigationClose from 'material-ui/svg-icons/action/home';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import Drawer from './drawer';
+import {goToLogin} from '../../services/router';
 
 
 class Login extends Component {
     static muiName = 'FlatButton';
 
+    goToLoginPage() {
+        goToLogin();
+    }
+
     render() {
         return (
-            <FlatButton {...this.props} label="Login" />
+            <FlatButton {...this.props}
+                label="Login"
+                onClick={this.goToLoginPage}>
+            </FlatButton>
         );
     }
 }
@@ -41,7 +47,7 @@ Logged.muiName = 'IconMenu';
 class Header extends Component {
 
     state = {
-        logged: true
+        logged: false
     };
 
     handleChange = (event, logged) => {
@@ -67,7 +73,6 @@ class Header extends Component {
                             ? <Logged />
                             : <Login />}>
                 </AppBar>
-                <Drawer/>
 
             </div>
         );
