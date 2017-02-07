@@ -4,7 +4,12 @@
 import React from 'react';
 import stylesScss from './style.scss';
 import TextField from 'material-ui/TextField';
-import {orange500, blue500, deepPurple900, grey50, lightGreenA700} from 'material-ui/styles/colors';
+import {
+    orange500,
+    blue500,
+    grey50,
+    lightGreenA700
+} from 'material-ui/styles/colors';
 
 const styles = {
     errorStyle: {
