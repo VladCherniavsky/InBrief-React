@@ -1,4 +1,15 @@
 .loginPage {
     height: 100%;
     background-image: url('./luxfon.com_3112.jpg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form {
+    background-color: rgba(27, 17, 51, 0.26);
+    border-radius: 1em;
+}
+.fields {
+    padding: 1em;
+
 }

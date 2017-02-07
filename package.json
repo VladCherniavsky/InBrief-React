@@ -19,7 +19,7 @@
     "postbuild": "cross-env NODE_ENV=production babel-node server/app.js"
   },
   "pre-commit": [
-      "lint:build",
+      "lint",
       "test"
   ],
   "license": "MIT",
