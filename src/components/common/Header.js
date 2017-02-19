@@ -53,15 +53,6 @@ class Header extends Component {
     handleChange = (event, logged) => {
         this.setState({logged: logged});
     };
-    // const loginBtn = () => {
-    //     return (
-    //         <div className="right menu">
-    //             <Link to="/login"
-    //                   activeClassName="active"
-    //                   className="item">Login</Link>
-    //         </div>
-    //     );
-    // };
     render() {
         return (
             <div>

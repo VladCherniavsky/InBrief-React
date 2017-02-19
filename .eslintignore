@@ -4,3 +4,4 @@ docs/**/*.js
 tools/**/*.js
 webpack.config.*
 src/**/*.scss
+dist/**/*.js

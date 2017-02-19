@@ -11,6 +11,9 @@ import {
     grey50,
     grey500
 } from 'material-ui/styles/colors';
+import * as loginActionCreators from '../../actions/bound_action_creators/login';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 const styles = {
     hintStyle: {
@@ -33,6 +36,17 @@ const styles = {
     }
 };
 class LoginPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {email: '', password: ''};
+    }
+
+    handleChange(event) {
+        console.log('e', event.target.name);
+        console.log('ed', this);
+        return this.setState({[event.target.name]: event.target.value});
+    }
+
     render() {
         return (
             <div className={stylesScss.loginPage}>
@@ -49,6 +63,9 @@ class LoginPage extends React.Component {
                             floatingLabelText="Email"
                             rows={1}
                             inputStyle={styles.input}
+                            value={this.state.email}
+                            name="email"
+                            onChange={this.handleChange.bind(this)}
                         /><br />
                         <TextField
                             hintText="Please enter password"
@@ -62,6 +79,8 @@ class LoginPage extends React.Component {
                             inputStyle={styles.input}
                             type="password"
                             rows={1}
+                            name="password"
+                            onChange={this.handleChange.bind(this)}
                         /><br />
                         <RaisedButton
                             label="Login"
@@ -78,5 +97,13 @@ class LoginPage extends React.Component {
         );
     }
 }
+const mapStateToProps = (state) => {
+    console.log('state', state);
+    return {};
+};
 
-export default LoginPage;
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(loginActionCreators, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

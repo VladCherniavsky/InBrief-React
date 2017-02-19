@@ -58,7 +58,10 @@ export default {
             },
             { test: /\.(png|jpg|jpeg)$/,
                 exclude: /(node_modules)/,
-                loader: "file?[path][name].[ext]"
+                loaders: [
+                    'preload-image',
+                    'file?[path][name].[ext]'
+                ]
             }
         ]
     }

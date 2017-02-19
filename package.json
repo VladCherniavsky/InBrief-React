@@ -19,8 +19,8 @@
     "postbuild": "cross-env NODE_ENV=production babel-node server/app.js"
   },
   "pre-commit": [
-      "lint",
-      "test"
+    "lint",
+    "test"
   ],
   "license": "MIT",
   "dependencies": {
@@ -39,6 +39,7 @@
     "mongoose": "^4.6.6",
     "nconf": "^0.8.4",
     "pre-commit": "^1.2.2",
+    "preload-image-loader": "^1.0.0",
     "react": "15.3.1",
     "react-addons-create-fragment": "^15.4.2",
     "react-addons-pure-render-mixin": "^15.4.2",
