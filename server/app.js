@@ -3,6 +3,7 @@
  */
 import dbConnection from './libs/mongoose';
 import express from 'express';
+import bodyParser from 'body-parser';
 import webpack from 'webpack';
 import compression from 'compression';
 import webpackMiddleware from './middlewares/webpackMiddleware';
@@ -20,7 +21,8 @@ global._root = __dirname;
 process.env.NODE_ENV === 'development'
     ? webpackMiddleware(app, compiler, webpackConfig)
     : app.use(compression());
-
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, config.get('static'))));
 app.use('/api', routers);
 app.get('*', common.sendIndexHtml);

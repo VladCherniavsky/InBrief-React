@@ -43,8 +43,12 @@ class LoginPage extends React.Component {
 
     handleChange(event) {
         console.log('e', event.target.name);
-        console.log('ed', this);
         return this.setState({[event.target.name]: event.target.value});
+    }
+
+    handleSubmit() {
+        console.log('ed', this);
+        this.props.actions.boundLogin(this.state);
     }
 
     render() {
@@ -53,6 +57,7 @@ class LoginPage extends React.Component {
                 <form className={stylesScss.form}>
                     <div className={stylesScss.fields}>
                         <TextField
+                            autoComplete="off"
                             hintText="Please enter email"
                             hintStyle={styles.hintStyle}
                             floatingLabelStyle={styles.floatingLabelStyle}
@@ -88,6 +93,7 @@ class LoginPage extends React.Component {
                             backgroundColor={blue500}
                             fullWidth={true}
                             icon={<Lock />}
+                            onClick={this.handleSubmit.bind(this)}
                             labelColor={styles.button.color}/>
                     </div>
                 </form>
