@@ -11,7 +11,8 @@ import {
     grey50,
     grey500
 } from 'material-ui/styles/colors';
-import * as loginActionCreators from '../../actions/bound_action_creators/login';
+import * as loginActionCreators
+    from '../../actions/bound_action_creators/login';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -42,12 +43,10 @@ class LoginPage extends React.Component {
     }
 
     handleChange(event) {
-        console.log('e', event.target.name);
         return this.setState({[event.target.name]: event.target.value});
     }
 
     handleSubmit() {
-        console.log('ed', this);
         this.props.actions.boundLogin(this.state);
     }
 
@@ -104,7 +103,6 @@ class LoginPage extends React.Component {
     }
 }
 const mapStateToProps = (state) => {
-    console.log('state', state);
     return {};
 };
 

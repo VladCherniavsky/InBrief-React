@@ -8,7 +8,6 @@ export const initialState = {
 };
 
 export function loginReducer(state = initialState.isLogged, action) {
-    console.log('action', action);
     switch (action.type) {
         case types.LOGIN:
             return false;

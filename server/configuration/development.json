@@ -1,13 +1,14 @@
 {
-  "port": 3005,
-  "db": {
-    "connection": "mongodb://vlados:vlados@ds015690.mlab.com:15690/inbriefdb",
-    "name": "inbrief",
-      "options": {
+    "port": 3005,
+    "db": {
+        "connection": "mongodb://vlados:vlados@ds015690.mlab.com:15690/inbriefdb",
+        "name": "inbrief",
+        "options": {
 
-      }
-  },
-  "key": "test",
-  "expirationPeriod": "30d",
-  "static": "../src"
+        }
+    },
+    "key": "test",
+    "expirationPeriod": "30d",
+    "static": "../src",
+    "saltRounds": "10"
 }

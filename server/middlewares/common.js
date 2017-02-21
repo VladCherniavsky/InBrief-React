@@ -10,7 +10,7 @@ export function listen(err) {
         ? console.log(err)
         : console.log(`Server is running on port:${config.get('port')}`);
 }
-export function errorHandler(req, res, next, err) {
+export function errorHandler(err, req, res, next) {
     return res.status(err.status ? err.status : 500).json(err);
 }
 export function sendIndexHtml(req, res) {

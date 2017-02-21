@@ -8,9 +8,7 @@ export const boundLogin = (creds) => (
         dispatch(login(creds));
 
         return sendLoginRequest(creds)
-            .then((res) => {
-console.log('res', res);
-})
-            .catch(console.error);
+            .then((res) => {})
+            .catch();
     }
 );
