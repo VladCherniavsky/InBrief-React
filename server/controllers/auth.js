@@ -4,7 +4,6 @@
 import User from '../models/user';
 
 export function login(req, res, next) {
-    console.log('ffffff', req.body);
     return res.json(req.body);
 }
 export function signup(req, res, next) {
