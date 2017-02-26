@@ -1,14 +1,17 @@
 /**
  * Created by vlad on 2/19/2017.
  */
-import {login} from '../action_creators/login';
+import {loginRequest, loginSuccess} from '../action_creators/login';
 import {sendLoginRequest} from '../../services/api/login';
 export const boundLogin = (creds) => (
     (dispatch) => {
-        dispatch(login(creds));
+        dispatch(loginRequest(creds));
 
         return sendLoginRequest(creds)
-            .then((res) => {})
+            .then((res) => {
+            alert();
+            dispatch(loginSuccess());
+            })
             .catch();
     }
 );

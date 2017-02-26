@@ -8,4 +8,6 @@ export const UPDATE_COURSE_SUCCESS = 'UPDATE_COURSE_SUCCESS';
 
 export const LOGOUT = 'LOGOUT';
 export const LOGIN = 'LOGIN';
+export const ddd = 'dd';
+
 

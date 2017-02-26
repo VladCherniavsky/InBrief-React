@@ -7,12 +7,12 @@ export const initialState = {
     isLogged: false
 };
 
-export function loginReducer(state = initialState.isLogged, action) {
+export function loginReducer(state = initialState, action) {
     switch (action.type) {
-        case types.LOGIN:
-            return false;
+        case types.LOGIN_REQUEST:
+            return {...state, isLogged: false};
         case types.LOGIN_SUCCESS:
-            return true;
+            return {...state, isLogged: true};
         case types.LOGIN_FAIL:
             return false;
 

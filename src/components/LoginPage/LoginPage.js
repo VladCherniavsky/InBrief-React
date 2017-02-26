@@ -53,9 +53,12 @@ class LoginPage extends React.Component {
     render() {
         return (
             <div className={stylesScss.loginPage}>
+
                 <form className={stylesScss.form}>
                     <div className={stylesScss.fields}>
+
                         <TextField
+                            fullWidth="true"
                             autoComplete="off"
                             hintText="Please enter email"
                             hintStyle={styles.hintStyle}
@@ -84,6 +87,7 @@ class LoginPage extends React.Component {
                             type="password"
                             rows={1}
                             name="password"
+                            fullWidth="true"
                             onChange={this.handleChange.bind(this)}
                         /><br />
                         <RaisedButton
@@ -96,14 +100,14 @@ class LoginPage extends React.Component {
                             labelColor={styles.button.color}/>
                     </div>
                 </form>
-
-
             </div>
         );
     }
 }
 const mapStateToProps = (state) => {
-    return {};
+    return {
+        isLogged: state.LoginReducer.isLogged
+    };
 };
 
 const mapDispatchToProps = (dispatch) => ({
