@@ -9,7 +9,17 @@
 .form {
     background-color: rgba(27, 17, 51, 0.26);
     border-radius: 1em;
+    transition: width 2s;
+    -webkit-transition: width 2s;
 }
 .fields {
     padding: 1em;
+}
+@media (max-width: 600px) {
+
+    .form {
+        width: 100%;
+        transition: width 2s;
+        -webkit-transition: width 2s;
+    }
 }

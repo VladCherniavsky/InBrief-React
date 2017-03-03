@@ -3,6 +3,6 @@
  */
 import Axios from 'axios';
 
-export const sendLoginRequest = (data) =>{
+export const sendLoginRequest = (data) => {
     return Axios.post('http://localhost:3005/api/login', data);
 };
