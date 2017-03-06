@@ -3,115 +3,81 @@
  */
 import React from 'react';
 import stylesScss from './style.scss';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import Lock from 'material-ui/svg-icons/action/lock';
-import {
-    blue500,
-    grey50,
-    grey500
-} from 'material-ui/styles/colors';
+import {Tabs, Tab} from 'material-ui/Tabs';
+import SwipeableViews from 'react-swipeable-views';
+import colors from '../common/colors';
+import AuthForm from './AuthForm';
 import * as loginActionCreators
     from '../../actions/bound_action_creators/login';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 const styles = {
-    hintStyle: {
-        color: grey500
+    headline: {
+        fontSize: 24,
+        paddingTop: 16,
+        marginBottom: 12,
+        fontWeight: 400
     },
-    underlineStyle: {
-        borderColor: blue500
+    slide: {
+        padding: 10
     },
-    floatingLabelStyle: {
-        color: grey50
-    },
-    floatingLabelFocusStyle: {
-        color: blue500
-    },
-    button: {
-        color: 'white'
-    },
-    input: {
-        color: 'white'
+    tabs: {
+        backgroundColor: colors.$lgPageBackground
     }
 };
 class LoginPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {email: '', password: ''};
+        this.state = {slideIndex: 0};
     }
-
-    handleChange(event) {
-        return this.setState({[event.target.name]: event.target.value});
+    handleSubmit(data) {
+        this.props.actions.boundLogin(data);
     }
-
-    handleSubmit() {
-        this.props.actions.boundLogin(this.state);
+    handleChangeTab(value) {
+        return this.setState({
+            slideIndex: value
+        });
+    }
+    componentWillReceiveProps(nextProps) {
     }
 
     render() {
         return (
             <div className={stylesScss.loginPage}>
+                <div>
+                    <Tabs
+                        onChange={this.handleChangeTab.bind(this)}
+                        value={this.state.slideIndex}
+                        tabItemContainerStyle={styles.tabs}>
 
-                <form className={stylesScss.form}>
-                    <div className={stylesScss.fields}>
-
-                        <TextField
-                            fullWidth="true"
-                            autoComplete="off"
-                            hintText="Please enter email"
-                            hintStyle={styles.hintStyle}
-                            floatingLabelStyle={styles.floatingLabelStyle}
-                            floatingLabelFocusStyle={
-                                    styles.floatingLabelFocusStyle
-                                }
-                            underlineFocusStyle={styles.underlineStyle}
-                            floatingLabelText="Email"
-                            rows={1}
-                            inputStyle={styles.input}
-                            value={this.state.email}
-                            name="email"
-                            onChange={this.handleChange.bind(this)}
-                        /><br />
-                        <TextField
-                            hintText="Please enter password"
-                            hintStyle={styles.hintStyle}
-                            floatingLabelStyle={styles.floatingLabelStyle}
-                            floatingLabelFocusStyle={
-                                    styles.floatingLabelFocusStyle
-                                }
-                            underlineFocusStyle={styles.underlineStyle}
-                            floatingLabelText="Password"
-                            inputStyle={styles.input}
-                            type="password"
-                            rows={1}
-                            name="password"
-                            fullWidth="true"
-                            onChange={this.handleChange.bind(this)}
-                        /><br />
-                        <RaisedButton
-                            label="Login"
-                            labelPosition="after"
-                            backgroundColor={blue500}
-                            fullWidth={true}
-                            icon={<Lock />}
-                            onClick={this.handleSubmit.bind(this)}
-                            labelColor={styles.button.color}/>
-                    </div>
-                </form>
+                        <Tab label="Login" value={0} />
+                        <Tab label="Sign Up" value={1} />
+                    </Tabs>
+                    <SwipeableViews
+                        index={this.state.slideIndex}
+                        onChangeIndex={this.handleChangeTab.bind(this)}>
+                        <div>
+                            <AuthForm isSignUpPage={this.state.slideIndex}
+                                      submit={this.handleSubmit.bind(this)}/>
+                        </div>
+                        <div>
+                            <AuthForm isSignUpPage={this.state.slideIndex}
+                                      submit={this.handleSubmit.bind(this)} />
+                        </div>
+                    </SwipeableViews>
+                </div>
             </div>
         );
     }
 }
-const mapStateToProps = (state) => {
-    return {
-        isLogged: state.LoginReducer.isLogged
-    };
-};
+const mapStateToProps = (state) => ({
+    isLogged: state.LoginReducer.isLogged
+});
 
 const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators(loginActionCreators, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+

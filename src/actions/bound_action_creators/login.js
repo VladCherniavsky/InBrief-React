@@ -9,8 +9,7 @@ export const boundLogin = (creds) => (
 
         return sendLoginRequest(creds)
             .then((res) => {
-            alert();
-            dispatch(loginSuccess());
+                dispatch(loginSuccess());
             })
             .catch();
     }

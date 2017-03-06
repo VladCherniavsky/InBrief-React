@@ -10,7 +10,10 @@ import AppBar from 'material-ui/AppBar';
 import colors from './colors';
 
 const styles = {
-    color: colors.$white
+    color: colors.$white,
+    title: {
+        cursor: 'pointer'
+    }
 };
 
 export default class DrawerSimpleExample extends React.Component {
@@ -21,6 +24,9 @@ export default class DrawerSimpleExample extends React.Component {
     handleToggle() {
         this.setState({open: !this.state.open});
     }
+    handleTouchTap() {
+        alert('redirect to home');
+    }
 
     render() {
         return (
@@ -30,11 +36,12 @@ export default class DrawerSimpleExample extends React.Component {
                 </IconButton>
 
                 {<Drawer open={this.state.open}>
-                    <AppBar title="InBrief"
+                    <AppBar title={<span style={styles.title}>InBrief</span>}
+                            onTitleTouchTap={this.handleTouchTap}
                             onLeftIconButtonTouchTap ={() => {
                                 this.handleToggle();
                             }}/>
-                    <MenuItem>Menu Item</MenuItem>
+                    <MenuItem></MenuItem>
                     <MenuItem>Menu Item 2</MenuItem>
                 </Drawer>}
             </div>
