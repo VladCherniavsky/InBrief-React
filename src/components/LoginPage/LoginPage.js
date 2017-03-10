@@ -7,8 +7,10 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import colors from '../common/colors';
 import AuthForm from './AuthForm';
-import * as loginActionCreators
+import * as boundLoginActionCreators
     from '../../actions/bound_action_creators/login';
+import * as boundSignupActionCreator
+    from '../../actions/bound_action_creators/signup';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -32,7 +34,9 @@ class LoginPage extends React.Component {
         this.state = {slideIndex: 0};
     }
     handleSubmit(data) {
-        this.props.actions.boundLogin(data);
+        this.state.slideIndex
+            ? this.props.actions.boundSignup(data)
+            : this.props.actions.boundLogin(data);
     }
     handleChangeTab(value) {
         return this.setState({
@@ -76,7 +80,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    actions: bindActionCreators(loginActionCreators, dispatch)
+    actions: bindActionCreators({
+        ...boundLoginActionCreators,
+        ...boundSignupActionCreator
+    }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
