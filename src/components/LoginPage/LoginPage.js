@@ -44,6 +44,7 @@ class LoginPage extends React.Component {
         });
     }
     componentWillReceiveProps(nextProps) {
+        console.log('nextProps', nextProps);
     }
 
     render() {

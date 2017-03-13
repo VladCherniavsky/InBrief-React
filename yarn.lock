@@ -4881,7 +4881,7 @@ react-addons-create-fragment@^15.0.0, react-addons-create-fragment@^15.4.2:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
-react-addons-css-transition-group@^15.4.2:
+react-addons-css-transition-group@^15.0.0, react-addons-css-transition-group@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react-addons-css-transition-group/-/react-addons-css-transition-group-15.4.2.tgz#b7828834dfa14229fe07750e331e8a8cb6fb7745"
   dependencies:
@@ -4922,6 +4922,12 @@ react-addons-update@^15.4.2:
   dependencies:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
+
+react-css-transition-replace@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-css-transition-replace/-/react-css-transition-replace-2.2.0.tgz#74050118a676a16050a2eecef69719914316284e"
+  dependencies:
+    react-addons-css-transition-group "^15.0.0"
 
 react-deep-force-update@^1.0.0:
   version "1.0.1"

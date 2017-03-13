@@ -3,15 +3,11 @@
  */
 import mongoose from 'mongoose';
 
-// mongoose.Promise = Promise;
-
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     userName: {
         type: String,
-        unique: 'This username already exists',
-        required: true,
         trim: true
     },
     email: {

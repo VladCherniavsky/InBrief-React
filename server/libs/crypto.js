@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import config from '../configuration';
 
 export const getHash = (stringText) => {
-    return bcrypt.hash(stringText, config.get('saltRounds'));
+    return bcrypt.hash(stringText, parseInt(config.get('saltRounds')));
 };
 
 export const compare = (string, hash) => {

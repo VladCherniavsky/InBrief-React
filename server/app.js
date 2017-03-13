@@ -12,11 +12,13 @@ import config from './configuration';
 import webpackConfig from '../webpack.config.index';
 import routers from './routers';
 import * as common from './middlewares/common';
+import _ from 'lodash';
 
 const app = express();
 const compiler = webpack(webpackConfig);
 
 global._root = __dirname;
+global._ = _;
 
 process.env.NODE_ENV === 'development'
     ? webpackMiddleware(app, compiler, webpackConfig)
