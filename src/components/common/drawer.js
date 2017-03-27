@@ -8,6 +8,7 @@ import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import IconButton from 'material-ui/IconButton';
 import AppBar from 'material-ui/AppBar';
 import colors from './colors';
+import {Link} from 'react-router';
 
 const styles = {
     color: colors.$white,
@@ -38,11 +39,9 @@ export default class DrawerSimpleExample extends React.Component {
                 {<Drawer open={this.state.open}>
                     <AppBar title={<span style={styles.title}>InBrief</span>}
                             onTitleTouchTap={this.handleTouchTap}
-                            onLeftIconButtonTouchTap ={() => {
-                                this.handleToggle();
-                            }}/>
-                    <MenuItem></MenuItem>
-                    <MenuItem>Menu Item 2</MenuItem>
+                            onLeftIconButtonTouchTap ={this.handleToggle.bind(this)}/>
+                    <Link to="/links"> <MenuItem onTouchTap={this.handleToggle.bind(this)}>Links</MenuItem></Link>
+                    <Link to="/home"><MenuItem onTouchTap={this.handleToggle.bind(this)}>Home</MenuItem></Link>
                 </Drawer>}
             </div>
         );

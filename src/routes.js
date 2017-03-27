@@ -6,6 +6,7 @@ import AboutPage from './components/AboutPage/AboutPage';
 import CoursesPage from './components/CoursesPage/CoursesPage';
 import ManageCoursePage from './components/CoursesPage/ManageCoursePage';
 import LoginPage from './components/LoginPage/LoginPage';
+import Links from './containers/Links/Links';
 
 export default (
     <div>
@@ -13,6 +14,7 @@ export default (
         <Route path="/" component={App}>
             <IndexRoute component={HomePage} />
             <Route path="about" component={AboutPage}/>
+            <Route path="links" component={Links}/>
             <Route path="home" component={HomePage}/>
             <Route path="course" component={ManageCoursePage}/>
             <Route path="course/:id" component={ManageCoursePage}/>
