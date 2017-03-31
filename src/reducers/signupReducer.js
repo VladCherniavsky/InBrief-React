@@ -6,7 +6,10 @@ import * as types from '../actions/index';
 export const initialState = {
     loading: false,
     error: '',
-    user: ''
+    user: {
+        email: null,
+        _id: null
+    }
 
 };
 
@@ -18,11 +21,18 @@ export function signupReducer(state = initialState, action) {
             return {
                 error: '',
                 loading: false,
-                user: action.payload};
+                user: {...action.payload}
+            };
         case types.SIGNUP_FAIL:
             return {
                 error: action.payload,
                 user: '',
+                loading: false
+            };
+        case types.SIGNUP_CLEAR_USER:
+            return {
+                error: null,
+                user: null,
                 loading: false
             };
 

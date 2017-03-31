@@ -6,3 +6,7 @@ import {browserHistory} from 'react-router';
 export const goToLogin = () => {
     browserHistory.push('/login');
 };
+
+export const goToHome = () => {
+    browserHistory.push('/home');
+};

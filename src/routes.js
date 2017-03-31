@@ -21,6 +21,6 @@ export default (
             <Route path="courses" component={CoursesPage}/>
         </Route>
         <Route path="login" component={LoginPage}/>
-
     </div>
+
 );

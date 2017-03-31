@@ -9,7 +9,6 @@ export function login(req, res, next) {
 }
 export function signup(req, res, next) {
     const user = global._.pick(req.body, Object.keys(req.body));
-    console.log('user', user);
     return new User(user)
         .save()
         .then((data) => res.json(data))

@@ -2,7 +2,6 @@
  * Created by vlad on 2/21/2017.
  */
 import mongoose from 'mongoose';
-
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({

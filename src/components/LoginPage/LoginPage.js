@@ -13,6 +13,8 @@ import * as boundSignupActionCreator
     from '../../actions/bound_action_creators/signup';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import toastr from 'toastr';
+import {goToHome} from '../../services/router';
 
 const styles = {
     headline: {
@@ -45,6 +47,14 @@ class LoginPage extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
         console.log('nextProps', nextProps);
+        if(nextProps.registeredUser._id) {
+            this.setState({slideIndex: 0});
+            toastr.success('User added, please log in', 'OK!');
+        }
+        if(nextProps.isLogged) {
+            alert();
+            goToHome();
+        }
     }
 
     render() {
@@ -77,7 +87,8 @@ class LoginPage extends React.Component {
     }
 }
 const mapStateToProps = (state) => ({
-    isLogged: state.LoginReducer.isLogged
+    isLogged: state.LoginReducer.isLogged,
+    registeredUser: state.SignupReducer.user
 });
 
 const mapDispatchToProps = (dispatch) => ({

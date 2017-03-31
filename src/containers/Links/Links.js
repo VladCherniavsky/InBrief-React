@@ -2,6 +2,7 @@
  * Created by User on 3/27/2017.
  */
 import React from 'react';
+import LinksTable from '../../components/LinksTable/LinksTable';
 
 class Links extends React.Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class Links extends React.Component {
         return(
             <div>
                 <h1>Links Table</h1>
+                <LinksTable></LinksTable>
             </div>
         );
     }

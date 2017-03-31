@@ -4,7 +4,8 @@
 import {
     SIGNUP_PENDING,
     SIGNUP_SUCCESS,
-    SIGNUP_FAIL
+    SIGNUP_FAIL,
+    SIGNUP_CLEAR_USER
 } from '../index';
 
 export const signupPending = (data) => ({
@@ -12,11 +13,16 @@ export const signupPending = (data) => ({
     payload: data
 });
 
-export const signupSuccess = () => ({
-    type: SIGNUP_SUCCESS
+export const signupSuccess = (data) => ({
+    type: SIGNUP_SUCCESS,
+    payload: data
 });
 
 export const signupFail = (err) => ({
     type: SIGNUP_FAIL,
     payload: err
+});
+
+export const clearUser = () => ({
+    type: SIGNUP_CLEAR_USER
 });

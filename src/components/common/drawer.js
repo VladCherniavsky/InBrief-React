@@ -36,12 +36,22 @@ export default class DrawerSimpleExample extends React.Component {
                     <NavigationMenu onClick={() => this.handleToggle()}/>
                 </IconButton>
 
-                {<Drawer open={this.state.open}>
+                {<Drawer open={this.state.open}
+                         docked={false}
+                         onRequestChange={::this.handleToggle}>
                     <AppBar title={<span style={styles.title}>InBrief</span>}
                             onTitleTouchTap={this.handleTouchTap}
-                            onLeftIconButtonTouchTap ={this.handleToggle.bind(this)}/>
-                    <Link to="/links"> <MenuItem onTouchTap={this.handleToggle.bind(this)}>Links</MenuItem></Link>
-                    <Link to="/home"><MenuItem onTouchTap={this.handleToggle.bind(this)}>Home</MenuItem></Link>
+                            onLeftIconButtonTouchTap={::this.handleToggle}/>
+                    <Link to="/links">
+                        <MenuItem onTouchTap={::this.handleToggle}>
+                            Links
+                        </MenuItem>
+                    </Link>
+                    <Link to="/home">
+                        <MenuItem onTouchTap={::this.handleToggle}>
+                            Home
+                        </MenuItem>
+                    </Link>
                 </Drawer>}
             </div>
         );

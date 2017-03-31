@@ -4,7 +4,8 @@
 import {
     signupPending,
     signupSuccess,
-    signupFail
+    signupFail,
+    clearUser
 } from '../action_creators/signup';
 import {sendSignupRequest} from '../../services/api/signup';
 
@@ -14,7 +15,9 @@ export const boundSignup = (data) => (
 
         return sendSignupRequest(data)
             .then((res) => {
-                dispatch(signupSuccess(res));
+            console.log('res', res);
+                dispatch(signupSuccess(res.data));
+                dispatch(clearUser());
             })
             .catch((err) => {
                 dispatch(signupFail(err));

@@ -3,8 +3,11 @@
  */
 import nconf from 'nconf';
 import path from 'path';
-nconf.argv()
+nconf
+    .argv()
     .env()
-    .file({file: path.join(__dirname, process.env.NODE_ENV + '.json')});
+    .file({
+        file: path.join(__dirname, process.env.NODE_ENV + '.json')
+    });
 
 export default nconf;
