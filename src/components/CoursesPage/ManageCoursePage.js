@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import toastr from 'toastr';
+import PropTypes from 'prop-types';
 
 class ManageCoursePage extends React.Component {
     constructor(props, c) {
@@ -60,13 +61,13 @@ class ManageCoursePage extends React.Component {
 }
 
 ManageCoursePage.propTypes = {
-    course: React.PropTypes.object.isRequired,
-    authors: React.PropTypes.array.isRequired,
-    actions: React.PropTypes.object.isRequired
+    course: PropTypes.object.isRequired,
+    authors: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
 };
 
 ManageCoursePage.contextTypes = {
-    router: React.PropTypes.object.isRequired
+    router: PropTypes.object.isRequired
 };
 
 function getCourseById(courses, courseId) {

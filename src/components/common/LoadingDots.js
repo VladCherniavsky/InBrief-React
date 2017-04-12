@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class LoadingDots extends React.Component {
     constructor(props, context) {
@@ -35,8 +36,8 @@ LoadingDots.defaultProps = {
 };
 
 LoadingDots.proptypes = {
-    interval: React.PropTypes.number,
-    dots: React.PropTypes.number
+    interval: PropTypes.number,
+    dots: PropTypes.number
 };
 
 export default LoadingDots;

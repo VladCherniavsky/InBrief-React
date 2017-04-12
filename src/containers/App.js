@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react';
-import Header from './common/Header';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Header from '../components/common/Header';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../actions/courseActions';

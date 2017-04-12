@@ -1,5 +1,6 @@
 import React from 'react';
 import CourseListRow from './CourseListRow';
+import PropTypes from 'prop-types';
 
 const CourseList = ({courses}) => {
     return (
@@ -22,7 +23,7 @@ const CourseList = ({courses}) => {
     );
 };
 CourseList.propTypes = {
-    courses: React.PropTypes.array.isRequired
+    courses: PropTypes.array.isRequired
 };
 
 export default CourseList;

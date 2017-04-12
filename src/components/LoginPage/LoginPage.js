@@ -46,7 +46,6 @@ class LoginPage extends React.Component {
         });
     }
     componentWillReceiveProps(nextProps) {
-        console.log('nextProps', nextProps);
         if(nextProps.registeredUser._id) {
             this.setState({slideIndex: 0});
             toastr.success('User added, please log in', 'OK!');

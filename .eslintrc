@@ -6,7 +6,8 @@
         "plugin:import/warnings"],
     "plugins": [
         "react",
-        "import"
+        "import",
+        "prefer-bind-operator"
     ],
     "parserOptions": {
         "ecmaVersion": 6,
@@ -26,6 +27,7 @@
     "rules": {
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error",
+        "prefer-bind-operator/prefer-bind-operator": 2,
         "comma-dangle": [
             "error",
             "never"

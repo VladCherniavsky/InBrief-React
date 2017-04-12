@@ -2,6 +2,7 @@
  * Created by vlad on 3/4/2017.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Lock from 'material-ui/svg-icons/action/lock';
@@ -136,7 +137,7 @@ class AuthForm extends React.Component {
 
 }
 AuthForm.propTypes = {
-    isSignUpPage: React.PropTypes.number,
-    submit: React.PropTypes.func
+    isSignUpPage: PropTypes.number,
+    submit: PropTypes.func
 };
 export default AuthForm;

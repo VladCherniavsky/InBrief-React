@@ -1,7 +1,8 @@
 /**
  * Created by vlad on 9/27/2016.
  */
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const AuthButton = ({title, onClick}) => {
     return (

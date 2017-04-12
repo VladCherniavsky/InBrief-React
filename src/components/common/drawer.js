@@ -27,6 +27,7 @@ export default class DrawerSimpleExample extends React.Component {
     }
     handleTouchTap() {
         alert('redirect to home');
+        this.setState({open: !this.state.open});
     }
 
     render() {
@@ -40,7 +41,7 @@ export default class DrawerSimpleExample extends React.Component {
                          docked={false}
                          onRequestChange={::this.handleToggle}>
                     <AppBar title={<span style={styles.title}>InBrief</span>}
-                            onTitleTouchTap={this.handleTouchTap}
+                            onTitleTouchTap={::this.handleTouchTap}
                             onLeftIconButtonTouchTap={::this.handleToggle}/>
                     <Link to="/links">
                         <MenuItem onTouchTap={::this.handleToggle}>

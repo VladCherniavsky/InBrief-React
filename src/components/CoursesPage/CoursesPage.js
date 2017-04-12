@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as courseAction from '../../actions/courseActions';
 import CourseList from './CourseList';
 import {browserHistory} from 'react-router';
+import PropTypes from 'prop-types';
 
 class CoursesPage extends React.Component {
     constructor(props, context) {
@@ -32,8 +33,8 @@ class CoursesPage extends React.Component {
     }
 }
 CoursesPage.propTypes = {
-    courses: React.PropTypes.array.isRequired,
-    actions: React.PropTypes.object.isRequired
+    courses: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

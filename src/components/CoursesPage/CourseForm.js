@@ -1,6 +1,7 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
+import PropTypes from 'prop-types';
 
 const CourseFrom = ({course, allAuthors, onSave, onChange, saving, errors}) => {
     return (
@@ -45,13 +46,13 @@ const CourseFrom = ({course, allAuthors, onSave, onChange, saving, errors}) => {
     );
 };
 CourseFrom.propTypes = {
-    course: React.PropTypes.object.isRequired,
-    allAuthors: React.PropTypes.array,
-    onSave: React.PropTypes.func,
-    onChange: React.PropTypes.func,
-    loading: React.PropTypes.bool,
-    errors: React.PropTypes.object,
-    saving: React.PropTypes.bool
+    course: PropTypes.object.isRequired,
+    allAuthors: PropTypes.array,
+    onSave: PropTypes.func,
+    onChange: PropTypes.func,
+    loading: PropTypes.bool,
+    errors: PropTypes.object,
+    saving: PropTypes.bool
 };
 
 export default CourseFrom;

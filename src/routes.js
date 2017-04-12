@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Redirect, IndexRoute} from 'react-router';
-import App from './components/App';
+import App from './containers/App';
 import HomePage from './components/HomePage/HomePage';
 import AboutPage from './components/AboutPage/AboutPage';
 import CoursesPage from './components/CoursesPage/CoursesPage';
