@@ -52,7 +52,7 @@ const columnNames = [
         displayName: 'Status',
         name: 'status'
     }
-]
+];
 
 class Links extends React.Component {
     constructor(props) {

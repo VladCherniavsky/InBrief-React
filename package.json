@@ -19,10 +19,10 @@
     "build": "babel-node tools/build.js",
     "postbuild": "cross-env NODE_ENV=production babel-node server/app.js"
   },
-  "pre-commit": [
+  /*"pre-commit": [
     "lint",
     "test"
-  ],
+  ],*/
   "license": "MIT",
   "dependencies": {
     "axios": "^0.15.3",
