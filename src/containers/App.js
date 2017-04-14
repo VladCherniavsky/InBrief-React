@@ -18,10 +18,11 @@ class App extends React.Component {
                 <Header
                     logout={() => this.logout()}
                     login={() => this.login()}
-                    isLogged={this.props.isLogged}/>
-                <div className="container-fluid">
-                    {this.props.children}
-                </div>
+                    isLogged={this.props.isLogged} >
+                </Header>
+
+                {this.props.children}
+
             </div>
 
         );

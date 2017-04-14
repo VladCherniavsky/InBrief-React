@@ -9,6 +9,7 @@ import IconButton from 'material-ui/IconButton';
 import AppBar from 'material-ui/AppBar';
 import colors from './colors';
 import {Link} from 'react-router';
+import {goToHome} from '../../services/router';
 
 const styles = {
     color: colors.$white,
@@ -26,8 +27,8 @@ export default class DrawerSimpleExample extends React.Component {
         this.setState({open: !this.state.open});
     }
     handleTouchTap() {
-        alert('redirect to home');
         this.setState({open: !this.state.open});
+        goToHome();
     }
 
     render() {
