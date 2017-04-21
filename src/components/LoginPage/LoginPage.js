@@ -51,7 +51,6 @@ class LoginPage extends React.Component {
             toastr.success('User added, please log in', 'OK!');
         }
         if(nextProps.isLogged) {
-            alert();
             goToHome();
         }
     }
@@ -61,7 +60,7 @@ class LoginPage extends React.Component {
             <div className={stylesScss.loginPage}>
                 <div>
                     <Tabs
-                        onChange={this.handleChangeTab.bind(this)}
+                        onChange={::this.handleChangeTab}
                         value={this.state.slideIndex}
                         tabItemContainerStyle={styles.tabs}>
 
@@ -70,14 +69,14 @@ class LoginPage extends React.Component {
                     </Tabs>
                     <SwipeableViews
                         index={this.state.slideIndex}
-                        onChangeIndex={this.handleChangeTab.bind(this)}>
+                        onChangeIndex={::this.handleChangeTab}>
                         <div>
                             <AuthForm isSignUpPage={this.state.slideIndex}
-                                      submit={this.handleSubmit.bind(this)}/>
+                                      submit={::this.handleSubmit}/>
                         </div>
                         <div>
                             <AuthForm isSignUpPage={this.state.slideIndex}
-                                      submit={this.handleSubmit.bind(this)} />
+                                      submit={::this.handleSubmit} />
                         </div>
                     </SwipeableViews>
                 </div>

@@ -82,7 +82,7 @@ class AuthForm extends React.Component {
                             inputStyle={styles.input}
                             value={this.state.email}
                             name="email"
-                            onChange={this.handleChange.bind(this)} />
+                            onChange={::this.handleChange} />
                         <br />
                         <TextField
                             fullWidth={true}
@@ -98,7 +98,7 @@ class AuthForm extends React.Component {
                             type="password"
                             rows={1}
                             name="password"
-                            onChange={this.handleChange.bind(this)} />
+                            onChange={::this.handleChange} />
                         <br />
                         {this.state.showSignUpPage
                             ? <TextField
@@ -115,7 +115,7 @@ class AuthForm extends React.Component {
                                 type="password"
                                 rows={1}
                                 name="repeatPassword"
-                                onChange={this.handleChange.bind(this)}/>
+                                onChange={::this.handleChange}/>
                             : null}
                         <br/>
                         <RaisedButton
@@ -128,7 +128,7 @@ class AuthForm extends React.Component {
                             fullWidth={true}
                             icon={<Lock />}
                             labelColor={styles.button.color}
-                            onClick={this.handleSubmit.bind(this)}/>
+                            onClick={::this.handleSubmit}/>
                     </div>
                 </form>
             </div>

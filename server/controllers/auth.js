@@ -2,7 +2,7 @@
  * Created by vlad on 2/20/2017.
  */
 import User from '../models/user';
-import {createError} from '../libs/error';
+// import {createError} from '../libs/error';
 
 export function login(req, res, next) {
     return res.json(req.body);

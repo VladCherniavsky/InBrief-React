@@ -15,7 +15,6 @@ export const boundSignup = (data) => (
 
         return sendSignupRequest(data)
             .then((res) => {
-            console.log('res', res);
                 dispatch(signupSuccess(res.data));
                 dispatch(clearUser());
             })

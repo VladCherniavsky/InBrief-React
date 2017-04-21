@@ -28,7 +28,6 @@ const LinksTable = class TableExampleComplex extends React.Component {
             deselectOnClickaway: true,
             showCheckboxes: false
         };
-        console.log('this.props', this.props);
     }
 
     render() {
@@ -60,7 +59,13 @@ const LinksTable = class TableExampleComplex extends React.Component {
                         {this.props.data.map( (row, index) => (
                             <TableRow key={index} selected={row.selected}>
                                 {this.props.columnNames.map((item, ind) => (
-                                    <TableRowColumn key={ind}>{row[item.name] ?row[item.name] : index}</TableRowColumn>
+                                    <TableRowColumn key={ind}>
+                                        {
+                                            row[item.name]
+                                                ?row[item.name]
+                                                : index
+                                        }
+                                    </TableRowColumn>
                                 ))}
                             </TableRow>
                         ))}

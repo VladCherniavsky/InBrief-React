@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 class CoursesPage extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
+        this.redirectToAddCoursePage = ::this.redirectToAddCoursePage;
     }
     courseRow(course, index) {
         return <div key={index}>{course.title}</div>;

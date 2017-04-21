@@ -14,8 +14,8 @@ class ManageCoursePage extends React.Component {
             errors: {},
             saving: false
         };
-        this.updateCourseState = this.updateCourseState.bind(this);
-        this.saveCourse = this.saveCourse.bind(this);
+        this.updateCourseState = ::this.updateCourseState;
+        this.saveCourse = ::this.saveCourse;
     }
 
     componentWillReceiveProps(nextProps) {

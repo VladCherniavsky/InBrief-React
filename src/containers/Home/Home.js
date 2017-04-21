@@ -4,38 +4,11 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 import stylesScss from './style.scss';
-import colors from '../../components/common/colors';
 import RaisedButton from 'material-ui/RaisedButton';
-import {
-    blue500,
-    grey50,
-    grey500
-} from 'material-ui/styles/colors';
 
-const styles = {
-    hintStyle: {
-        color: grey500
-    },
-    underlineStyle: {
-        borderColor: blue500
-    },
-    floatingLabelStyle: {
-        color: grey50
-    },
-    floatingLabelFocusStyle: {
-        color: blue500
-    },
-    button: {
-        color: colors.$white
-    },
-    input: {
-        color: colors.$white
-    }
-};
 const style = {
-    margin: 12,
+    marginTop: '12px'
 };
-
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -44,7 +17,22 @@ class Home extends React.Component {
     render() {
         return(
             <div className={stylesScss.wrapper}>
-                <h1>Hello</h1>
+                <div className={stylesScss.mainContent}>
+                     <div className={stylesScss.alignTop}>
+                         <div>
+                             <TextField
+                                 hintText="Full width"
+                                 fullWidth={true} >
+                             </TextField>
+                             <RaisedButton label="Primary"
+                                           primary={true}
+                                           style={style} >
+                             </RaisedButton>
+                         </div>
+
+                     </div>
+                </div>
+
 
             </div>
         );
