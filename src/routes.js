@@ -5,7 +5,7 @@ import HomePage from './containers/Home/Home';
 import AboutPage from './components/AboutPage/AboutPage';
 import CoursesPage from './components/CoursesPage/CoursesPage';
 import ManageCoursePage from './components/CoursesPage/ManageCoursePage';
-import LoginPage from './components/LoginPage/LoginPage';
+import LoginPage from './containers/LoginPage';
 import Links from './containers/Links/Links';
 
 export default (

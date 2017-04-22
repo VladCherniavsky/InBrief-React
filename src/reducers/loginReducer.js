@@ -14,7 +14,7 @@ export function loginReducer(state = initialState, action) {
         case types.LOGIN_SUCCESS:
             return {...state, isLogged: true};
         case types.LOGIN_FAIL:
-            return false;
+            return {...state, isLogged: false};
 
         default:
             return state;

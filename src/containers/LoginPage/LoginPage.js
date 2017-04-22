@@ -5,8 +5,8 @@ import React from 'react';
 import stylesScss from './style.scss';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
-import colors from '../common/colors';
-import AuthForm from './AuthForm';
+import colors from '../../components/common/colors';
+import AuthForm from '../../components/AuthForm';
 import * as boundLoginActionCreators
     from '../../actions/bound_action_creators/login';
 import * as boundSignupActionCreator

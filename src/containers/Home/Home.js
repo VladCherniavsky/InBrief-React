@@ -2,13 +2,24 @@
  * Created by User on 4/14/2017.
  */
 import React from 'react';
-import TextField from 'material-ui/TextField';
 import stylesScss from './style.scss';
-import RaisedButton from 'material-ui/RaisedButton';
+import InputButton from '../../components/InputButton/InputButton';
+
+import {deepPurple800} from 'material-ui/styles/colors';
 
 const style = {
-    marginTop: '12px'
+    button: {
+        marginLeft: '3px'
+    },
+    underlineStyle: {
+        borderColor: deepPurple800
+    },
+    buttonStyle: {
+        backgroundColor: deepPurple800
+    }
+
 };
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -19,15 +30,10 @@ class Home extends React.Component {
             <div className={stylesScss.wrapper}>
                 <div className={stylesScss.mainContent}>
                      <div className={stylesScss.alignTop}>
-                         <div>
-                             <TextField
-                                 hintText="Full width"
-                                 fullWidth={true} >
-                             </TextField>
-                             <RaisedButton label="Primary"
-                                           primary={true}
-                                           style={style} >
-                             </RaisedButton>
+                         <div className={stylesScss.centered}>
+                             <InputButton style={style}
+                                          buttonLabelText="Get Short Link"
+                                          placeHolder="Enter URL"/>
                          </div>
 
                      </div>

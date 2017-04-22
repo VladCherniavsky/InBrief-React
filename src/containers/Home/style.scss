@@ -7,6 +7,8 @@
 .alignTop {
     width: 70%;
     display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 .mainContent {
     display: flex;
@@ -14,8 +16,11 @@
     justify-content: center;
     margin-top: 5%;
     min-width: 75%;
-    min-height: 30%;
+    min-height: 35vh;
     background-color: #EDE7F6;
     align-self: flex-start;
     border-radius: 10px;
+}
+.centered {
+    align-self: center;
 }
