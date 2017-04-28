@@ -11,7 +11,7 @@ export async function login(req, res, next) {
         const user = await User.findOne({email: req.body.email});
         return user
             ? checkPassword(user)
-            : createError('Authentication failed. User not found', 401);
+            : next(createError('Authentication failed. User not found', 401));
     } catch(err) {
         return next(err);
     }

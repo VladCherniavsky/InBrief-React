@@ -46,11 +46,15 @@ class LoginPage extends React.Component {
         });
     }
     componentWillReceiveProps(nextProps) {
+        if(nextProps.error) {
+            toastr.error(nextProps.error.message, 'Opps!');
+        }
         if(nextProps.registeredUser._id) {
             this.setState({slideIndex: 0});
             toastr.success('User added, please log in', 'OK!');
         }
         if(nextProps.isLogged) {
+            toastr.success('You\'re logged in!', 'OK!');
             goToHome();
         }
     }
@@ -85,6 +89,7 @@ class LoginPage extends React.Component {
     }
 }
 const mapStateToProps = (state) => ({
+    error: state.LoginReducer.error,
     isLogged: state.LoginReducer.isLogged,
     registeredUser: state.SignupReducer.user
 });

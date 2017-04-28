@@ -4,7 +4,8 @@
 import {
     loginRequest,
     loginSuccess,
-    loginFail
+    loginFail,
+    clearError
 } from '../action_creators/login';
 import {sendLoginRequest} from '../../services/api/login';
 export const boundLogin = (creds) => (
@@ -15,8 +16,9 @@ export const boundLogin = (creds) => (
             .then((res) => {
                 dispatch(loginSuccess());
             })
-            .catch(() => {
-                dispatch(loginFail());
+            .catch((err) => {
+                dispatch(loginFail(err.response.data));
+                dispatch(clearError());
             });
     }
 );
