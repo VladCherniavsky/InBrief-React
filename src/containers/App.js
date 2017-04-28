@@ -4,18 +4,11 @@ import Header from '../components/common/Header';
 import {connect} from 'react-redux';
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {isLogged: props.isLogged};
-    }
     render() {
         return (
             <div>
-                <Header isLogged={this.state.isLogged} >
-                </Header>
-
+                <Header isLogged={this.props.isLogged} />
                 {this.props.children}
-
             </div>
 
         );

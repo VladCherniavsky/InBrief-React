@@ -19,7 +19,7 @@
     "build": "babel-node tools/build.js",
     "postbuild": "cross-env NODE_ENV=production babel-node server/app.js"
   },
- "pre-commit": [
+  "pre-commit": [
     "lint",
     "test"
   ],
@@ -44,6 +44,7 @@
     "jsonwebtoken": "^7.3.0",
     "material-ui": "^0.17.3",
     "mongoose": "^4.6.6",
+    "mongoose-unique-validator": "^1.0.5",
     "nconf": "^0.8.4",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2",
@@ -67,6 +68,7 @@
     "redux": "3.5.2",
     "redux-thunk": "2.0.1",
     "resolve-url-loader": "^1.6.1",
+    "shortid": "^2.2.8",
     "toastr": "2.1.2"
   },
   "devDependencies": {

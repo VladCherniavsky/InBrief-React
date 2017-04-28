@@ -1,67 +1,23 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-// import {Link, IndexLink} from 'react-router';
 import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import FlatButton from 'material-ui/FlatButton';
 import Drawer from './drawer';
-import {goToLogin} from '../../services/router';
+import LoginButton from './LoginButton';
+import MenuLogged from './Menu';
 
-
-class Login extends Component {
-    static muiName = 'FlatButton';
-
-    goToLoginPage() {
-        goToLogin();
-    }
-
+class Header extends PureComponent {
     render() {
-        return (
-            <FlatButton {...this.props}
-                label="Login"
-                onClick={this.goToLoginPage}>
-            </FlatButton>
-        );
-    }
-}
-
-const Logged = (props) => (
-  <div>
-      <IconMenu
-          {...props}
-          iconButtonElement={
-              <IconButton><MoreVertIcon /></IconButton>
-          }
-          targetOrigin={{horizontal: 'right', vertical: 'top'}}
-          anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
-
-          <MenuItem primaryText="Refresh" />
-          <MenuItem primaryText="Help" />
-          <MenuItem primaryText="Sign out" />
-      </IconMenu>
-  </div>
-);
-
-Logged.muiName = 'IconMenu';
-
-class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {logged: props.isLogged};
-    }
-    render() {
+        const {isLogged} = this.props;
         return (
             <div>
                 <AppBar
                     title="InBrief"
                     iconElementLeft={ <Drawer />}
                     iconElementRight={
-                        this.state.logged
-                            ? <Logged />
-                            : <Login />}>
+                        isLogged
+                            ? <MenuLogged />
+                            : <LoginButton />
+                    }>
                 </AppBar>
 
             </div>

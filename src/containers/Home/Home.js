@@ -4,7 +4,6 @@
 import React from 'react';
 import stylesScss from './style.scss';
 import InputButton from '../../components/InputButton/InputButton';
-
 import {deepPurple800} from 'material-ui/styles/colors';
 
 const style = {
