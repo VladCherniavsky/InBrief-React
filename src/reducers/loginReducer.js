@@ -5,7 +5,9 @@ import * as types from '../actions/index';
 
 export const initialState = {
     isLogged: false,
-    error: null
+    error: null,
+    token: '',
+    user: null
 };
 
 export function loginReducer(state = initialState, action) {
@@ -13,7 +15,7 @@ export function loginReducer(state = initialState, action) {
         case types.LOGIN_REQUEST:
             return {...state, isLogged: false};
         case types.LOGIN_SUCCESS:
-            return {...state, isLogged: true, error: null};
+            return {...state, isLogged: true, ...action.payload};
         case types.LOGIN_FAIL:
             return {...state, isLogged: false, error: action.payload};
         case types.LOGIN_CLEAR_ERROR:

@@ -7,7 +7,8 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Header isLogged={this.props.isLogged} />
+                <Header isLogged={this.props.isLogged}
+                        userEmail={this.props.userEmail}/>
                 {this.props.children}
             </div>
 
@@ -20,7 +21,10 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) =>({
-    isLogged: state.LoginReducer.isLogged
+    isLogged: state.LoginReducer.isLogged,
+    userEmail: state.LoginReducer.user
+        ? state.LoginReducer.user.email
+        : ''
 });
 
 export default connect(mapStateToProps, null)(App);

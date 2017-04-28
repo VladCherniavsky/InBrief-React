@@ -32,7 +32,7 @@ export async function login(req, res, next) {
         const dataForToken = global._.pick(user, keys);
         const token = jwt.signToken(dataForToken);
         jwt.setToken(res, token);
-        res.setHeader('userInfo', dataForToken);
+        res.setHeader('userInfo', JSON.stringify(dataForToken));
         res.json();
     }
 }

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import Drawer from './drawer';
 import LoginButton from './LoginButton';
-import MenuLogged from './Menu';
+import MenuLogged from './Menu/Menu';
 
 class Header extends PureComponent {
     render() {
-        const {isLogged} = this.props;
+        const {isLogged, userEmail} = this.props;
         return (
             <div>
                 <AppBar
@@ -15,7 +15,7 @@ class Header extends PureComponent {
                     iconElementLeft={ <Drawer />}
                     iconElementRight={
                         isLogged
-                            ? <MenuLogged />
+                            ? <MenuLogged userEmail={userEmail}/>
                             : <LoginButton />
                     }>
                 </AppBar>
@@ -27,6 +27,7 @@ class Header extends PureComponent {
 
 }
 Header.propTypes = {
+    userEmail: PropTypes.string,
     logout: PropTypes.func,
     isLogged: PropTypes.bool,
     login: PropTypes.func

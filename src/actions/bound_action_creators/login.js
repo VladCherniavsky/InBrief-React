@@ -14,7 +14,11 @@ export const boundLogin = (creds) => (
 
         return sendLoginRequest(creds)
             .then((res) => {
-                dispatch(loginSuccess());
+                const data = {
+                    token: res.headers['x-access-token'],
+                    user: JSON.parse(res.headers['userinfo'])
+                };
+                dispatch(loginSuccess(data));
             })
             .catch((err) => {
                 dispatch(loginFail(err.response.data));
