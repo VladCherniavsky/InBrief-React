@@ -5,7 +5,8 @@ import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGIN_CLEAR_ERROR
+    LOGIN_CLEAR_ERROR,
+    LOGIN_NEW_TOKEN
 } from '../index';
 
 export const loginRequest = (creds) => ({
@@ -25,4 +26,8 @@ export const loginFail = (err) => ({
 
 export const clearError = () => ({
     type: LOGIN_CLEAR_ERROR
+});
+export const setNewToken = (data) => ({
+    type: LOGIN_NEW_TOKEN,
+    payload: data
 });

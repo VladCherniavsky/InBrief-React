@@ -8,10 +8,17 @@ import * as jwt from '../libs/jwt';
 
 export async function login(req, res, next) {
     try {
-        const user = await User.findOne({email: req.body.email});
-        return user
-            ? checkPassword(user)
-            : next(createError('Authentication failed. User not found', 401));
+        const user = await User.findOne({
+            email: req.body.email || req.decoded.email
+        });
+        if(req.decoded) {
+            return successLogin(user);
+        } else {
+            const message = 'Authentication failed. User not found';
+            return user
+                ? checkPassword(user)
+                : next(createError(message, 401));
+        }
     } catch(err) {
         return next(err);
     }

@@ -3,12 +3,10 @@ import rootReducer from '../reducers';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
 
-const store = '';
+let store;
 
-export default function configureStore(initialState) {
-    return store
-        ? store
-        : createStore(
+export const configureStore = (initialState) => {
+    store = createStore(
             rootReducer,
             initialState,
             compose(
@@ -18,4 +16,9 @@ export default function configureStore(initialState) {
                     : (f) => f
             )
     );
-}
+    return store;
+};
+
+export const getStore = () => {
+    return store ? store : null;
+};

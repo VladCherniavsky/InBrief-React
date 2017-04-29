@@ -97,6 +97,7 @@ class AuthForm extends React.Component {
                             inputStyle={styles.input}
                             type="password"
                             rows={1}
+                            value={this.state.password}
                             name="password"
                             onChange={::this.handleChange} />
                         <br />

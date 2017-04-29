@@ -13,6 +13,7 @@ import webpackConfig from '../webpack.config.index';
 import routers from './routers';
 import * as common from './middlewares/common';
 import _ from 'lodash';
+import checkAccessMiddleware from './middlewares/checkAccess';
 
 const app = express();
 const compiler = webpack(webpackConfig);
@@ -26,6 +27,7 @@ process.env.NODE_ENV === 'development'
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, config.get('static'))));
+app.use(checkAccessMiddleware);
 app.use('/api', routers);
 app.get('*', common.sendIndexHtml);
 app.use(common.errorHandler);
