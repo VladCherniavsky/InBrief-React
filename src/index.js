@@ -26,7 +26,10 @@ const muiTheme = getMuiTheme({
 });
 
 const store = configureStore();
-sendLoginRequest();
+if(localStorage.getItem('token')) {
+    sendLoginRequest();
+}
+
 
 injectTapEventPlugin();
 

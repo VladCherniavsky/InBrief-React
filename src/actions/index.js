@@ -12,3 +12,8 @@ export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAIL = 'SIGNUP_FAIL';
 export const SIGNUP_CLEAR_USER = 'SIGNUP_CLEAR_USER';
 
+export const LINK_ADD_REQUEST = 'LINK_ADD_REQUEST';
+export const LINK_ADD_SUCCESS = 'LINK_ADD_SUCCESS';
+export const LINK_ADD_FAIL = 'LINK_ADD_FAIL';
+export const LINK_GET_ALL = 'LINK_GET_ALL';
+

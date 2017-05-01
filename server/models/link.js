@@ -4,11 +4,12 @@
 import mongoose from 'mongoose';
 import shortid from 'shortid';
 import uniqueValidator from 'mongoose-unique-validator';
+import {findAndCount} from '../libs/helper';
 
 const Schema = mongoose.Schema;
 
 const linkSchema = new Schema({
-    originalLink: {
+    link: {
         type: String,
         unique: 'This link already exists',
         required: true,
@@ -40,6 +41,8 @@ const linkSchema = new Schema({
         type: Number
     }
 });
+
+linkSchema.statics.findAndCount = findAndCount;
 
 linkSchema.plugin(uniqueValidator);
 const linkModel = mongoose.model('Link', linkSchema);

@@ -24,3 +24,12 @@
 .centered {
     align-self: center;
 }
+
+@media only screen and (max-width : 768px) {
+
+    .mainContent {
+        margin-top: 30%;
+    }
+}
+
+

@@ -14,6 +14,7 @@ export default function checkAccess(req, res, next) {
             req.decoded = decoded;
             next();
         } catch (err) {
+            err.status = 401;
             next(err);
         }
     }

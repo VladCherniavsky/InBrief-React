@@ -1,16 +1,14 @@
 import {combineReducers} from 'redux';
-import courses from './courseReducer';
-import authors from './authorReducer';
 import ajaxCallsInProgress from './ajaxStatusReducer';
 import {loginReducer} from './loginReducer';
 import {signupReducer} from './signupReducer';
+import {linkReducer} from './linkReducer';
 
 const rootReducer = combineReducers({
-    courses,
-    authors,
     ajaxCallsInProgress,
     LoginReducer: loginReducer,
-    SignupReducer: signupReducer
+    SignupReducer: signupReducer,
+    LinkReducer: linkReducer
 });
 
 export default rootReducer;

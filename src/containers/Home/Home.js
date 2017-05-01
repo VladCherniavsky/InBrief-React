@@ -4,12 +4,14 @@
 import React from 'react';
 import stylesScss from './style.scss';
 import InputButton from '../../components/InputButton/InputButton';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as boundLinkActionCreators
+    from '../../actions/bound_action_creators/link';
 import {deepPurple800} from 'material-ui/styles/colors';
+import toastr from 'toastr';
 
 const style = {
-    button: {
-        marginLeft: '3px'
-    },
     underlineStyle: {
         borderColor: deepPurple800
     },
@@ -19,9 +21,27 @@ const style = {
 
 };
 
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {link: ''};
+    }
+
+    getShortLink() {
+        this.props.actions.boundAddLink({link: this.state.link});
+    }
+    handleChange(event) {
+        this.setState({link: event.target.value});
+    }
+    componentWillReceiveProps(nextProps) {
+        this.setState({link: ''});
+        if(nextProps.createdLink) {
+            toastr.success('Link saved', 'Ok');
+        }
+        if(nextProps.error) {
+            toastr.error(nextProps.error.errmsg, 'Opps');
+        }
     }
 
     render() {
@@ -31,6 +51,9 @@ class Home extends React.Component {
                      <div className={stylesScss.alignTop}>
                          <div className={stylesScss.centered}>
                              <InputButton style={style}
+                                          inputValue={this.state.link}
+                                          onChange={::this.handleChange}
+                                          onClick={::this.getShortLink}
                                           buttonLabelText="Get Short Link"
                                           placeHolder="Enter URL"/>
                          </div>
@@ -44,5 +67,16 @@ class Home extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    createdLink: state.LinkReducer.link,
+    error: state.LinkReducer.error
+});
 
-export default Home;
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators({
+        ...boundLinkActionCreators
+    }, dispatch)
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

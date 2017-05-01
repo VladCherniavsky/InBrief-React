@@ -2,6 +2,7 @@
  * Created by vlad on 2/21/2017.
  */
 import mongoose from 'mongoose';
+import {findAndCount} from '../libs/helper';
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -25,6 +26,8 @@ const userSchema = new Schema({
         default: false
     }
 });
+
+userSchema.statics.findAndCount = findAndCount;
 
 const userModel = mongoose.model('User', userSchema);
 export default userModel;

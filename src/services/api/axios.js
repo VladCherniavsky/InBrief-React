@@ -4,6 +4,7 @@
 import Axios from 'axios';
 import {getStore} from '../../store/configureStore';
 import {setNewToken} from '../../actions/action_creators/login';
+import toastr from 'toastr';
 
 const instance = Axios.create({
     baseURL: 'http://localhost:3000/'
@@ -15,7 +16,7 @@ instance.interceptors.request.use((config) => {
     if(store) {
         const state = store.getState().LoginReducer;
         const token = state.token || localStorage.getItem('token');
-        token ? config.headers['x-access-token'] = token + 'a' : null;
+        token ? config.headers['x-access-token'] = token : null;
     }
     return config;
     }, (err) => {
@@ -37,11 +38,11 @@ instance.interceptors.response.use((response) => {
     }
     return response;
 }, (error) => {
-    /* const errorData = error.response.data;
+     const errorData = error.response.data;
     if(errorData.name === 'JsonWebTokenError') {
-
-
-    }*/
+        localStorage.clear();
+        toastr.error(errorData.message + '! Please, log in.', 'Opps');
+    }
     return Promise.reject(error);
 });
 
