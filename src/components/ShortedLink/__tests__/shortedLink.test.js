@@ -3,9 +3,11 @@
  */
 import React from 'react';
 import {expect} from 'chai';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import ShortedLink from '../ShortedLink';
 import ContentCopyIcon from 'material-ui/svg-icons/content/content-copy';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 describe('<ShortedLink />', () => {
     it('renders ShortedLink without crashing', () => {
@@ -13,9 +15,16 @@ describe('<ShortedLink />', () => {
     });
 
     it('should render 1 <IconButton /> component', () => {
-        const component = shallow(<ShortedLink />);
+        const testString = 'abcdeg';
+        const component = mount(
+            <MuiThemeProvider>
+                <ShortedLink shortedLink={testString}/>
+            </MuiThemeProvider>);
         const IconButton = component.find('IconButton');
+
         expect(IconButton).to.have.length(1);
+        const shortedLink = component.props().children.props.shortedLink;
+        expect(shortedLink).to.equal(testString);
     });
 
     it('should render 1 <ContentCopyIcon /> inside <IconButton/ >', () => {

@@ -6,7 +6,8 @@ import {
     LINK_ADD_SUCCESS,
     LINK_ADD_FAIL,
     LINK_GET_ALL,
-    LINK_CLEAR_ERROR
+    LINK_CLEAR_ERROR,
+    LINK_CLEAR_DATA
 } from '../index';
 
 export const linkAddRequest = () => ({
@@ -29,4 +30,8 @@ export const linkGetAll = (data) => ({
 });
 export const linkClearError = () => ({
     type: LINK_CLEAR_ERROR
+});
+
+export const linkClear = () => ({
+    type: LINK_CLEAR_DATA
 });

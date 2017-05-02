@@ -5,7 +5,8 @@ import {
     linkAddRequest,
     linkAddSuccess,
     linkAddFail,
-    linkClearError
+    linkClearError,
+    linkClear
 } from '../action_creators/link';
 
 import {sendAddLinkRequest} from '../../services/api/link';
@@ -22,5 +23,11 @@ export const boundAddLink = (data) => (
                 dispatch(linkAddFail(err.response.data));
                 dispatch(linkClearError());
             });
+    }
+);
+
+export const clearLink = () => (
+    (dispatch) => {
+        dispatch(linkClear());
     }
 );

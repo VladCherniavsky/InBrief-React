@@ -17,4 +17,5 @@ export const LINK_ADD_SUCCESS = 'LINK_ADD_SUCCESS';
 export const LINK_ADD_FAIL = 'LINK_ADD_FAIL';
 export const LINK_GET_ALL = 'LINK_GET_ALL';
 export const LINK_CLEAR_ERROR = 'LINK_CLEAR_ERROR';
+export const LINK_CLEAR_DATA = 'LINK_CLEAR_DATA';
 

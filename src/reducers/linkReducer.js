@@ -31,6 +31,8 @@ export function linkReducer(state = initialState, action) {
             };
         case types.LINK_CLEAR_ERROR:
             return {...state, error: null};
+        case types.LINK_CLEAR_DATA:
+            return {...state, link: null};
 
         default:
             return state;

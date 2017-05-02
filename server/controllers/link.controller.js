@@ -20,3 +20,14 @@ export const getAll = (req, res, next) => {
         .then((data)=> res.json(data))
         .catch(next);
 };
+
+export const redirect = (req, res, next) => {
+    return Link
+        .findOneAndUpdate({
+            shortLink: req.params.shortLink
+        }, {$inc: {clicks: 1}})
+        .then((link) => {
+            return link ? res.redirect(link.link) : res.json();
+        })
+        .catch(next);
+};

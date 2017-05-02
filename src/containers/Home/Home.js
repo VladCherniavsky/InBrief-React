@@ -9,10 +9,9 @@ import {bindActionCreators} from 'redux';
 import * as boundLinkActionCreators
     from '../../actions/bound_action_creators/link';
 import {deepPurple800} from 'material-ui/styles/colors';
-import toastr from 'toastr';
+import toastr from '../../services/toastr';
 import ShortedLink from '../../components/ShortedLink';
 
-toastr.options.timeOut = 800;
 
 const style = {
     underlineStyle: {
@@ -21,14 +20,13 @@ const style = {
     buttonStyle: {
         backgroundColor: deepPurple800
     }
-
 };
 
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {link: ''};
+        this.state = {link: '', shortedLink: ''};
     }
 
     getShortLink() {
@@ -40,13 +38,29 @@ class Home extends React.Component {
     componentWillReceiveProps(nextProps) {
         this.setState({link: ''});
         if(nextProps.createdLink) {
-            toastr.success('Link saved', 'Ok');
+            if(this.state.shortedLink !== nextProps.createdLink.shortLink) {
+                this.setState({
+                    link: '',
+                    shortedLink: nextProps.createdLink.shortLink
+                });
+                toastr.success('Link saved', 'Ok');
+            }
         }
         if(nextProps.error) {
             const error = nextProps.error;
             toastr.error(error.errmsg || error.message, 'Opps');
         }
     }
+    componentWillUnmount() {
+        this.props.actions.clearLink();
+    }
+    formatLink() {
+        let link = location.origin
+            + '/api/link/'
+            + this.props.createdLink.shortLink;
+        return link;
+    }
+
 
     render() {
         return(
@@ -64,7 +78,7 @@ class Home extends React.Component {
                                 {
                                     this.props.createdLink
                                     && <ShortedLink shortedLink={
-                                        this.props.createdLink.shortLink
+                                        ::this.formatLink()
                                     } />
                                 }
                             </div>
