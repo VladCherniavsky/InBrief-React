@@ -10,6 +10,9 @@ import * as boundLinkActionCreators
     from '../../actions/bound_action_creators/link';
 import {deepPurple800} from 'material-ui/styles/colors';
 import toastr from 'toastr';
+import ShortedLink from '../../components/ShortedLink';
+
+toastr.options.timeOut = 800;
 
 const style = {
     underlineStyle: {
@@ -40,7 +43,8 @@ class Home extends React.Component {
             toastr.success('Link saved', 'Ok');
         }
         if(nextProps.error) {
-            toastr.error(nextProps.error.errmsg, 'Opps');
+            const error = nextProps.error;
+            toastr.error(error.errmsg || error.message, 'Opps');
         }
     }
 
@@ -48,20 +52,25 @@ class Home extends React.Component {
         return(
             <div className={stylesScss.wrapper}>
                 <div className={stylesScss.mainContent}>
-                     <div className={stylesScss.alignTop}>
-                         <div className={stylesScss.centered}>
-                             <InputButton style={style}
-                                          inputValue={this.state.link}
-                                          onChange={::this.handleChange}
-                                          onClick={::this.getShortLink}
-                                          buttonLabelText="Get Short Link"
-                                          placeHolder="Enter URL"/>
-                         </div>
-
-                     </div>
+                    <div className={stylesScss.alignTop}>
+                        <div className={stylesScss.centered}>
+                            <InputButton style={style}
+                                         inputValue={this.state.link}
+                                         onChange={::this.handleChange}
+                                         onClick={::this.getShortLink}
+                                         buttonLabelText="Get Short Link"
+                                         placeHolder="Enter URL"/>
+                            <div className={stylesScss.shortedLinkBlock}>
+                                {
+                                    this.props.createdLink
+                                    && <ShortedLink shortedLink={
+                                        this.props.createdLink.shortLink
+                                    } />
+                                }
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-
             </div>
         );
     }

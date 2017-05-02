@@ -20,7 +20,7 @@ const linkSchema = new Schema({
         type: String,
         required: true,
         trim: true,
-        default: shortid.generate()
+        default: shortid.generate
     },
     userId: {
         type: Schema.Types.ObjectId,

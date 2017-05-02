@@ -1,0 +1,8 @@
+
+.link {
+    vertical-align: super;
+    cursor: pointer;
+    &:hover {
+        text-decoration: none;
+    }
+}

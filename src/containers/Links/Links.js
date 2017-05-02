@@ -59,6 +59,10 @@ class Links extends React.Component {
         super(props);
     }
 
+    componentWillMount() {
+
+    }
+
     render() {
         return(
         <div>

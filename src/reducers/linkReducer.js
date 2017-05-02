@@ -14,14 +14,23 @@ export function linkReducer(state = initialState, action) {
         case types.LOGIN_REQUEST:
             return {...state, loading: true};
         case types.LINK_ADD_FAIL:
-            return {...state, loading: false, error: action.payload};
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                link: null
+            };
         case types.LINK_ADD_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                link: action.payload,
+                link: {
+                    ...action.payload
+                },
                 error: null
             };
+        case types.LINK_CLEAR_ERROR:
+            return {...state, error: null};
 
         default:
             return state;

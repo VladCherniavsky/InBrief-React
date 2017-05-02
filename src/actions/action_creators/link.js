@@ -5,7 +5,8 @@ import {
     LINK_ADD_REQUEST,
     LINK_ADD_SUCCESS,
     LINK_ADD_FAIL,
-    LINK_GET_ALL
+    LINK_GET_ALL,
+    LINK_CLEAR_ERROR
 } from '../index';
 
 export const linkAddRequest = () => ({
@@ -25,4 +26,7 @@ export const linkAddFail = (data) => ({
 export const linkGetAll = (data) => ({
     type: LINK_GET_ALL,
     payload: data
+});
+export const linkClearError = () => ({
+    type: LINK_CLEAR_ERROR
 });
