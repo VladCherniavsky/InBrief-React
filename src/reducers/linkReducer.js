@@ -33,6 +33,16 @@ export function linkReducer(state = initialState, action) {
             return {...state, error: null};
         case types.LINK_CLEAR_DATA:
             return {...state, link: null};
+        case types.LINK_GET_ALL_REQUEST:
+            return {...state, link: null, loading: true};
+        case types.LINK_GET_ALL_SUCCESS:
+            return {...state, loading: false, links: action.payload};
+        case types.LINK_GET_ALL_FAIL:
+            return {...state,
+                loading: false,
+                links: null,
+                error: action.payload
+            };
 
         default:
             return state;

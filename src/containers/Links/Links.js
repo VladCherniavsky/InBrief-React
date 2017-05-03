@@ -3,40 +3,11 @@
  */
 import React from 'react';
 import LinksTable from '../../components/LinksTable/LinksTable';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as boundLinkActionCreators
+    from '../../actions/bound_action_creators/link';
 import styles from './style.scss';
-
-const tableData = [
-    {
-        name: 'John Smith',
-        status: 'Employed',
-        selected: true
-    },
-    {
-        name: 'Randal White',
-        status: 'Unemployed'
-    },
-    {
-        name: 'Stephanie Sanders',
-        status: 'Employed',
-        selected: true
-    },
-    {
-        name: 'Steve Brown',
-        status: 'Employed'
-    },
-    {
-        name: 'Joyce Whitten',
-        status: 'Employed'
-    },
-    {
-        name: 'Samuel Roberts',
-        status: 'Employed'
-    },
-    {
-        name: 'Adam Moore',
-        status: 'Employed'
-    }
-];
 
 const columnNames = [
     {
@@ -44,23 +15,30 @@ const columnNames = [
         name: 'id'
     },
     {
-        displayName: 'Name',
-        name: 'name'
+        displayName: 'Link',
+        name: 'link'
 
     },
     {
-        displayName: 'Status',
-        name: 'status'
+        displayName: 'Short Link',
+        name: 'shortLink'
     }
 ];
 
 class Links extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {links: []};
     }
 
     componentWillMount() {
-
+        this.props.actions.boundGetLinks();
+    }
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            links: nextProps.links.data,
+            count: nextProps.links.count
+        });
     }
 
     render() {
@@ -68,8 +46,7 @@ class Links extends React.Component {
         <div>
             <div className={styles.wrapper}>
                 <h1>Links Table</h1>
-
-                <LinksTable data={tableData}
+                <LinksTable data={this.state.links}
                             columnNames={columnNames}>
                 </LinksTable>
             </div>
@@ -77,6 +54,16 @@ class Links extends React.Component {
         );
     }
 }
+const mapStateToProps = (state) => ({
+    links: state.LinkReducer.links,
+    error: state.LinkReducer.error
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators({
+        ...boundLinkActionCreators
+    }, dispatch)
+});
 
 
-export default Links;
+export default connect(mapStateToProps, mapDispatchToProps)(Links);

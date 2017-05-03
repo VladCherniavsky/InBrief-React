@@ -10,6 +10,7 @@ import styleScss from './style.scss';
 import copy from 'copy-to-clipboard';
 import toastr from 'toastr';
 
+
 const ShortedLink = (props) => {
     const {shortedLink} = props;
 

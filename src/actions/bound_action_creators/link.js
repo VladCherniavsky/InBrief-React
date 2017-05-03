@@ -6,10 +6,16 @@ import {
     linkAddSuccess,
     linkAddFail,
     linkClearError,
-    linkClear
+    linkClear,
+    linkGetAllRequest,
+    linkGetAllSuccess,
+    linkGetAllFail
 } from '../action_creators/link';
 
-import {sendAddLinkRequest} from '../../services/api/link';
+import {
+    sendAddLinkRequest,
+    getAllLinks
+} from '../../services/api/link';
 
 export const boundAddLink = (data) => (
     (dispatch) => {
@@ -26,8 +32,18 @@ export const boundAddLink = (data) => (
     }
 );
 
-export const clearLink = () => (
+export const boundClearLink = () => (
     (dispatch) => {
         dispatch(linkClear());
+    }
+);
+
+export const boundGetLinks = () => (
+    (dispatch) => {
+        dispatch(linkGetAllRequest());
+
+        return getAllLinks()
+            .then((res) => dispatch(linkGetAllSuccess(res.data)))
+            .catch((err) => dispatch(linkGetAllFail(err.response.data)));
     }
 );
