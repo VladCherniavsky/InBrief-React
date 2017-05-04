@@ -8,12 +8,11 @@ import {bindActionCreators} from 'redux';
 import * as boundLinkActionCreators
     from '../../actions/bound_action_creators/link';
 import styles from './style.scss';
+import ModeEditIcon from 'material-ui/svg-icons/editor/mode-edit';
+import TrashIcon from 'material-ui/svg-icons/action/delete-forever';
+import IconButton from 'material-ui/IconButton';
 
 const columnNames = [
-    {
-        displayName: 'Id',
-        name: 'id'
-    },
     {
         displayName: 'Link',
         name: 'link'
@@ -26,8 +25,16 @@ const columnNames = [
     {
         displayName: 'Clicks',
         name: 'clicks'
+    },
+    {
+        displayName: 'Actions',
+        name: 'actions'
     }
 ];
+const aa= <div>
+    <IconButton><ModeEditIcon/></IconButton>
+    <IconButton><TrashIcon/></IconButton>
+</div>;
 
 class Links extends React.Component {
     constructor(props) {
@@ -45,12 +52,19 @@ class Links extends React.Component {
         });
     }
 
+    mapLinks() {
+        return this.state.links.map((item) => {
+            item.actions = aa;
+            return item;
+        });
+    }
+
     render() {
         return(
         <div>
             <div className={styles.wrapper}>
                 <h1>Links Table</h1>
-                <LinksTable data={this.state.links}
+                <LinksTable data={::this.mapLinks()}
                             columnNames={columnNames}>
                 </LinksTable>
             </div>
