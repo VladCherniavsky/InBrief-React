@@ -10,20 +10,13 @@
  * @param {Object} sort - Specify sorting
  * @return {Object} data - Contains 'count'  and 'data' properties
  */
-const findAndCount = async (filter = {}, skipLimit = null, sort = null) => {
-    try {
-        const [count, data] = await Promise.all([
-            this.count(filter),
-            this.find(filter, null, skipLimit).sort(sort)
-        ]);
-        return {
-            count,
-            data
-        };
-    } catch(err) {
-        throw err;
-    }
-};
-
-export findAndCount;
-
+export async function findAndCount(filter = {}, skipLimit = null, sort = null) {
+    const [count, data] = await Promise.all([
+        this.count(filter),
+        this.find(filter, null, skipLimit).sort(sort)
+    ]);
+    return {
+        count,
+        data
+    };
+}

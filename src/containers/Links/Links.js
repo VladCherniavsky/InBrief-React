@@ -22,6 +22,10 @@ const columnNames = [
     {
         displayName: 'Short Link',
         name: 'shortLink'
+    },
+    {
+        displayName: 'Clicks',
+        name: 'clicks'
     }
 ];
 

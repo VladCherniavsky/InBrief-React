@@ -12,6 +12,8 @@ import {Table,
 }
     from 'material-ui/Table';
 
+const a = ['<TableHeaderColumn>dddd</TableHeaderColumn>;', '<TableHeaderColumn>aaa</TableHeaderColumn>;'];
+
 const LinksTable = class TableExampleComplex extends React.Component {
 
     constructor(props) {
@@ -44,9 +46,12 @@ const LinksTable = class TableExampleComplex extends React.Component {
                         enableSelectAll={this.state.enableSelectAll}>
 
                         <TableRow>
-                            <TableHeaderColumn>ID</TableHeaderColumn>
-                            <TableHeaderColumn>Name</TableHeaderColumn>
-                            <TableHeaderColumn>Status</TableHeaderColumn>
+                            {this.props.columnNames.map((columnName, index) => (
+                                <TableHeaderColumn key={index}>
+                                    {columnName}
+                                </TableHeaderColumn>
+                            ))
+                            }
                         </TableRow>
 
                     </TableHeader>

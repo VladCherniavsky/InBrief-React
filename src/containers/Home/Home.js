@@ -52,7 +52,7 @@ class Home extends React.Component {
         }
     }
     componentWillUnmount() {
-        this.props.actions.clearLink();
+        this.props.actions.boundClearLink();
     }
     formatLink() {
         let link = location.origin
