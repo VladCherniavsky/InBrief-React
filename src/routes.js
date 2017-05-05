@@ -2,7 +2,6 @@ import React from 'react';
 import {Route, Redirect, IndexRoute} from 'react-router';
 import App from './containers/App';
 import HomePage from './containers/Home/Home';
-import AboutPage from './components/AboutPage/AboutPage';
 import CoursesPage from './components/CoursesPage/CoursesPage';
 import ManageCoursePage from './components/CoursesPage/ManageCoursePage';
 import LoginPage from './containers/LoginPage';
@@ -13,7 +12,6 @@ export default (
         <Redirect from="/" to="/home" />
         <Route path="/" component={App}>
             <IndexRoute component={HomePage} />
-            <Route path="about" component={AboutPage}/>
             <Route path="links" component={Links}/>
             <Route path="home" component={HomePage}/>
             <Route path="course" component={ManageCoursePage}/>

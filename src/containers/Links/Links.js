@@ -8,38 +8,36 @@ import {bindActionCreators} from 'redux';
 import * as boundLinkActionCreators
     from '../../actions/bound_action_creators/link';
 import styles from './style.scss';
-import ModeEditIcon from 'material-ui/svg-icons/editor/mode-edit';
-import TrashIcon from 'material-ui/svg-icons/action/delete-forever';
-import IconButton from 'material-ui/IconButton';
+import {addHostToLink} from '../../services/helper';
 
 const columnNames = [
     {
         displayName: 'Link',
-        name: 'link'
+        name: 'link',
+        isLink: true
 
     },
     {
         displayName: 'Short Link',
-        name: 'shortLink'
+        name: 'shortLink',
+        isLink: true
     },
     {
         displayName: 'Clicks',
         name: 'clicks'
-    },
-    {
-        displayName: 'Actions',
-        name: 'actions'
     }
 ];
-const aa= <div>
-    <IconButton><ModeEditIcon/></IconButton>
-    <IconButton><TrashIcon/></IconButton>
-</div>;
 
 class Links extends React.Component {
     constructor(props) {
         super(props);
         this.state = {links: []};
+    }
+
+    updateTable() {
+       setTimeout(() => {
+            this.props.actions.boundGetLinks();
+        }, 300);
     }
 
     componentWillMount() {
@@ -51,10 +49,9 @@ class Links extends React.Component {
             count: nextProps.links.count
         });
     }
-
-    mapLinks() {
+    mapData() {
         return this.state.links.map((item) => {
-            item.actions = aa;
+            item.shortLink = addHostToLink(item.shortLink);
             return item;
         });
     }
@@ -64,7 +61,8 @@ class Links extends React.Component {
         <div>
             <div className={styles.wrapper}>
                 <h1>Links Table</h1>
-                <LinksTable data={::this.mapLinks()}
+                <LinksTable data={::this.mapData()}
+                            updateTable={::this.updateTable}
                             columnNames={columnNames}>
                 </LinksTable>
             </div>

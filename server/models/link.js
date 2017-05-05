@@ -35,10 +35,12 @@ const linkSchema = new Schema({
         type: [{
             type: String,
             trim: true
-        }]
+        }],
+        default: ['qwe', 'qwe', 'qwe']
     },
     clicks: {
-        type: Number
+        type: Number,
+        default: 0
     }
 });
 

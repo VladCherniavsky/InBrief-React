@@ -7,15 +7,20 @@ import {shallow, mount} from 'enzyme';
 import ShortedLink from '../ShortedLink';
 import ContentCopyIcon from 'material-ui/svg-icons/content/content-copy';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+// import injectTapEventPlugin from 'react-tap-event-plugin';
 
+/*
+try {
+    injectTapEventPlugin();
+} catch (e) {
+
+}
+*/
 
 describe('<ShortedLink />', () => {
     it('renders ShortedLink without crashing', () => {
         shallow(<ShortedLink />);
     });
-
     it('should render 1 <IconButton /> component', () => {
         const testString = 'abcdeg';
         const component = mount(

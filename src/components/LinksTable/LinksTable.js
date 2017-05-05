@@ -2,7 +2,9 @@
  * Created by vlad on 3/31/2017.
  */
 import React from 'react';
+import ActionButtons from '../ActionButtons';
 import PropTypes from 'prop-types';
+import Tag from '../../components/Tag';
 import {Table,
     TableBody,
     TableHeader,
@@ -41,6 +43,28 @@ const LinksTable = class TableExampleComplex extends React.Component {
         ));
     }
 
+    onShortLinkClick(name) {
+        return () => (
+            name == 'shortLink'
+                ? this.props.updateTable()
+                : null
+        );
+    }
+
+    renderData(row, item) {
+        if(item.isLink) {
+            return (
+                <a target="_blank"
+                   href={row[item.name]}
+                   onTouchTap={::this.onShortLinkClick(item.name)}>
+                    {row[item.name]}
+                </a>
+            );
+        } else {
+            return row[item.name];
+        }
+    }
+
     render() {
         return (
             <div>
@@ -56,6 +80,8 @@ const LinksTable = class TableExampleComplex extends React.Component {
 
                         <TableRow>
                             {::this.renderTableHeaders(this.props.columnNames)}
+                            <TableHeaderColumn>Actions</TableHeaderColumn>
+
                         </TableRow>
 
                     </TableHeader>
@@ -69,13 +95,15 @@ const LinksTable = class TableExampleComplex extends React.Component {
                             <TableRow key={index} selected={row.selected}>
                                 {this.props.columnNames.map((item, ind) => (
                                     <TableRowColumn key={ind}>
-                                        {
-                                            row[item.name]
-                                                ?row[item.name]
-                                                : index
-                                        }
+                                        {::this.renderData(row, item)}
                                     </TableRowColumn>
                                 ))}
+                                <TableRowColumn>
+                                    <ActionButtons />
+                                </TableRowColumn>
+                                <TableRowColumn>
+                                    <Tag tag="asdasd" />
+                                </TableRowColumn>
                             </TableRow>
                         ))}
                     </TableBody>

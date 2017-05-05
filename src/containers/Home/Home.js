@@ -11,6 +11,7 @@ import * as boundLinkActionCreators
 import {deepPurple800} from 'material-ui/styles/colors';
 import toastr from '../../services/toastr';
 import ShortedLink from '../../components/ShortedLink';
+import {addHostToLink} from '../../services/helper';
 
 
 const style = {
@@ -55,10 +56,7 @@ class Home extends React.Component {
         this.props.actions.boundClearLink();
     }
     formatLink() {
-        let link = location.origin
-            + '/api/link/'
-            + this.props.createdLink.shortLink;
-        return link;
+        return addHostToLink(this.props.createdLink.shortLink);
     }
 
 
