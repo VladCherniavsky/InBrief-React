@@ -55,6 +55,11 @@ class Links extends React.Component {
             return item;
         });
     }
+    filter(data) {
+        return () => {
+            this.props.actions.boundGetLinks(data);
+        };
+    }
 
     render() {
         return(
@@ -63,6 +68,7 @@ class Links extends React.Component {
                 <h1>Links Table</h1>
                 <LinksTable data={::this.mapData()}
                             updateTable={::this.updateTable}
+                            onClickFilter={::this.filter}
                             columnNames={columnNames}>
                 </LinksTable>
             </div>

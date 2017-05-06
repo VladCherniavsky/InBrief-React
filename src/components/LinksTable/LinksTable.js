@@ -66,6 +66,7 @@ const LinksTable = class TableExampleComplex extends React.Component {
     }
 
     render() {
+        const {onClickFilter} = this.props;
         return (
             <div>
                 <Table
@@ -80,7 +81,10 @@ const LinksTable = class TableExampleComplex extends React.Component {
 
                         <TableRow>
                             {::this.renderTableHeaders(this.props.columnNames)}
+                            <TableHeaderColumn>User's Email</TableHeaderColumn>
+                            <TableHeaderColumn>Tags</TableHeaderColumn>
                             <TableHeaderColumn>Actions</TableHeaderColumn>
+
 
                         </TableRow>
 
@@ -99,10 +103,25 @@ const LinksTable = class TableExampleComplex extends React.Component {
                                     </TableRowColumn>
                                 ))}
                                 <TableRowColumn>
-                                    <ActionButtons />
+                                    <Tag tag={row.userId.email}
+                                         onClick={onClickFilter({
+                                             userId: row.userId._id
+                                         })}>
+                                    </Tag>
+                                </TableRowColumn>
+
+                                <TableRowColumn>
+                                    {row.tags.map((tag, i) => (
+                                        <Tag key={i}
+                                             numberSign={true}
+                                             tag={tag}
+                                             onClick={onClickFilter({
+                                                 tag: tag
+                                             })}/>
+                                    ))}
                                 </TableRowColumn>
                                 <TableRowColumn>
-                                    <Tag tag="asdasd" />
+                                    <ActionButtons />
                                 </TableRowColumn>
                             </TableRow>
                         ))}
@@ -118,7 +137,9 @@ const LinksTable = class TableExampleComplex extends React.Component {
 
 LinksTable.propTypes = {
     data: PropTypes.array,
-    columnNames: PropTypes.array
+    columnNames: PropTypes.array,
+    updateTable: PropTypes.func,
+    onClickFilter: PropTypes.func
 };
 
 export default LinksTable;

@@ -38,11 +38,11 @@ export const boundClearLink = () => (
     }
 );
 
-export const boundGetLinks = () => (
+export const boundGetLinks = (data) => (
     (dispatch) => {
         dispatch(linkGetAllRequest());
 
-        return getAllLinks()
+        return getAllLinks(data)
             .then((res) => dispatch(linkGetAllSuccess(res.data)))
             .catch((err) => dispatch(linkGetAllFail(err.response.data)));
     }

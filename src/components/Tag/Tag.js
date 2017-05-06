@@ -6,12 +6,18 @@ import PropTypes from 'prop-types';
 import syleScss from './style.scss';
 
 const Tag = (props) => {
-    const {tag} = props;
+    const {tag, onClick, numberSign} = props;
     return (
-        <a className={syleScss.tag}>{'#' + tag}</a>
+        <a className={syleScss.tag}
+           onTouchTap={onClick}>{
+            (numberSign ? '#' : '') + tag
+           }
+        </a>
     );
 };
 Tag.propTypes = {
-    tag: PropTypes.string.isRequired
+    tag: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
+    numberSign: PropTypes.bool
 };
 export default Tag;
