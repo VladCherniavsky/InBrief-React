@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import LinksTable from '../../components/LinksTable/LinksTable';
+import Chip from '../../components/Chip';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as boundLinkActionCreators
@@ -55,10 +56,15 @@ class Links extends React.Component {
             return item;
         });
     }
-    filter(data) {
+    filter(data, filterVal) {
         return () => {
+            ::this.addFilter(filterVal);
             this.props.actions.boundGetLinks(data);
         };
+    }
+
+    addFilter(data) {
+        this.refs.chip.handleRequestAdd(data);
     }
 
     render() {
@@ -66,6 +72,7 @@ class Links extends React.Component {
         <div>
             <div className={styles.wrapper}>
                 <h1>Links Table</h1>
+                <Chip ref="chip"></Chip>
                 <LinksTable data={::this.mapData()}
                             updateTable={::this.updateTable}
                             onClickFilter={::this.filter}
