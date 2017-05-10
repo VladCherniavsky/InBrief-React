@@ -4,6 +4,7 @@
 import React from 'react';
 import LinksTable from '../../components/LinksTable/LinksTable';
 import Chip from '../../components/Chip';
+import ConfirmWindow from '../../components/ConfirmWindow';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as boundLinkActionCreators
@@ -45,6 +46,7 @@ class Links extends React.Component {
         this.props.actions.boundGetLinks();
     }
     componentWillReceiveProps(nextProps) {
+        console.log('ConfirmWindow', this.refs.confirmWindow.handleOpen('Delete', 'Are you sure?'));
         this.setState({
             links: nextProps.links.data,
             count: nextProps.links.count
@@ -72,6 +74,7 @@ class Links extends React.Component {
         <div>
             <div className={styles.wrapper}>
                 <h1>Links Table</h1>
+                <ConfirmWindow ref="confirmWindow"/>
                 <Chip ref="chip"></Chip>
                 <LinksTable data={::this.mapData()}
                             updateTable={::this.updateTable}

@@ -117,7 +117,7 @@ const LinksTable = class TableExampleComplex extends React.Component {
                                              tag={tag}
                                              onClick={onClickFilter({
                                                  tag: tag
-                                             })}/>
+                                             }, tag)}/>
                                     ))}
                                 </TableRowColumn>
                                 <TableRowColumn>
