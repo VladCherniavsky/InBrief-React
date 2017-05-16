@@ -66,7 +66,12 @@ const LinksTable = class TableExampleComplex extends React.Component {
     }
 
     render() {
-        const {onClickFilter} = this.props;
+        const {
+            onClickFilter,
+            onClickDelete,
+            onClickInfo,
+            onClickEdit
+        } = this.props;
         return (
             <div>
                 <Table
@@ -121,7 +126,11 @@ const LinksTable = class TableExampleComplex extends React.Component {
                                     ))}
                                 </TableRowColumn>
                                 <TableRowColumn>
-                                    <ActionButtons />
+                                    <ActionButtons
+                                        infoClick={onClickInfo(row._id) }
+                                        editClick={ onClickEdit(row._id) }
+                                        removeclick={ onClickDelete(row._id) }
+                                    />
                                 </TableRowColumn>
                             </TableRow>
                         ))}
@@ -139,7 +148,10 @@ LinksTable.propTypes = {
     data: PropTypes.array,
     columnNames: PropTypes.array,
     updateTable: PropTypes.func,
-    onClickFilter: PropTypes.func
+    onClickFilter: PropTypes.func,
+    onClickDelete: PropTypes.func,
+    onClickInfo: PropTypes.func,
+    onClickEdit: PropTypes.func
 };
 
 export default LinksTable;

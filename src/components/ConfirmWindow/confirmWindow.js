@@ -4,7 +4,6 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 
 /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
@@ -16,6 +15,13 @@ export default class ConfirmWindow extends React.Component {
     state = {
         open: false
     };
+
+    answer(answer) {
+        return () => {
+            ::this.handleClose();
+            return answer;
+        };
+    }
 
     handleOpen(title, message) {
         this.setState({
@@ -31,6 +37,7 @@ export default class ConfirmWindow extends React.Component {
             title: '',
             message: ''
         });
+        return false;
     }
 
     render() {
@@ -38,13 +45,13 @@ export default class ConfirmWindow extends React.Component {
             <FlatButton
                 label="Cancel"
                 primary={true}
-                onTouchTap={::this.handleClose}
+                onTouchTap={::this.answer(false)}
             />,
             <FlatButton
                 label="Submit"
                 primary={true}
                 keyboardFocused={true}
-                onTouchTap={::this.handleClose}
+                onTouchTap={::this.answer(true)}
             />
         ];
 

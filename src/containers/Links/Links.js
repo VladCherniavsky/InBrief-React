@@ -46,7 +46,7 @@ class Links extends React.Component {
         this.props.actions.boundGetLinks();
     }
     componentWillReceiveProps(nextProps) {
-        console.log('ConfirmWindow', this.refs.confirmWindow.handleOpen('Delete', 'Are you sure?'));
+        // console.log('ConfirmWindow', this.refs.confirmWindow.handleOpen('Delete', 'Are you sure?'));
         this.setState({
             links: nextProps.links.data,
             count: nextProps.links.count
@@ -64,6 +64,19 @@ class Links extends React.Component {
             this.props.actions.boundGetLinks(data);
         };
     }
+    onClickInfo(linkId) {
+        return () => {
+        };
+    }
+    onClickEdit(linkId) {
+        return () => {
+        };
+    }
+    onClickDelete(linkId) {
+        return () => {
+            this.refs.confirmWindow.handleOpen('Delete', 'Are you sure?');
+        };
+    }
 
     addFilter(data) {
         this.refs.chip.handleRequestAdd(data);
@@ -79,6 +92,9 @@ class Links extends React.Component {
                 <LinksTable data={::this.mapData()}
                             updateTable={::this.updateTable}
                             onClickFilter={::this.filter}
+                            onClickInfo={::this.onClickInfo}
+                            onClickEdit={::this.onClickEdit}
+                            onClickDelete={::this.onClickDelete}
                             columnNames={columnNames}>
                 </LinksTable>
             </div>
