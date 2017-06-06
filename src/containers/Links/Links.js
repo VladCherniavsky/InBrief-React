@@ -65,12 +65,9 @@ class Links extends React.Component {
         });
     }
     filter(data, filterVal) {
-
         return () => {
-
             const key = Object.keys(data)[0];
             if(Object.keys(data).length > 0) {
-
                 if(!this.state.filter[key].includes(data[key])) {
                     const filter = {
                         ...this.state.filter
@@ -80,7 +77,6 @@ class Links extends React.Component {
                     this.setState({filter: filter});
 
                     console.log('filter', this.state.filter);
-
                 }
             }
             const itemChip = {
@@ -89,6 +85,7 @@ class Links extends React.Component {
                 propName: key
             };
             ::this.addFilter(itemChip);
+            this.props.actions.boundGetLinks(this.state.filter);
         };
     }
     onClickInfo(linkId) {
@@ -111,7 +108,10 @@ class Links extends React.Component {
             : null;
     }
     removeItemFromChip(data) {
-        console.log('data', data);
+        const stateFilter = this.state.filter;
+        const indexToDelete = stateFilter[data.propName].indexOf(data.value);
+        stateFilter[data.propName].splice(indexToDelete, 1);
+        this.setState({...this.state, filter: stateFilter});
         console.log('this.state.filter', this.state.filter);
     }
 
