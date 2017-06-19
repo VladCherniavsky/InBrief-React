@@ -3,7 +3,7 @@
 ### Shortcut References(not finished)
 
 
-##Running app: [link](http://inbriefreact-vladcherniavsky.c9users.io/home)
+## Running app: *[link](http://inbriefreact-vladcherniavsky.c9users.io/home)*
 
 
 ## How to install ?
@@ -18,11 +18,11 @@
      ```
 * **Install dependencies**
      ```bash
-     yarn install
+     yarn install 
      ```
 * **Run project**
     ```bash
-    yarn start
+    yarn start or npm start
     ```
 * **Visit [localhost:3000](localhost:3000)**
 
@@ -30,7 +30,7 @@
 ## To build: 
 
 ```bash
-yarn  run build
+yarn  run build or npm  run build
 ```
 
 ## Code convention
@@ -41,5 +41,14 @@ yarn  run build
 
 :bulb:  *You can\'t commit if you have code style error  or tests failed*
 
+
+## Used: 
+
+* **Node.js**
+* **Express**
+* **React+Redux**
+* **Webpack**
+* **MongoDB**
+* **Yarn**
 
 
