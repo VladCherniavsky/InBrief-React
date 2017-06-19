@@ -3,6 +3,9 @@
 ### Shortcut References(not finished)
 
 
+##Running app: [link](http://inbriefreact-vladcherniavsky.c9users.io/home)
+
+
 ## How to install ?
  
 * **Clone the repo via git**

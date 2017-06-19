@@ -43,6 +43,7 @@
     "ignore-styles": "^5.0.1",
     "image-webpack-loader": "^3.2.0",
     "jquery": "2.2.3",
+    "jsdoc": "^3.4.3",
     "jsonwebtoken": "^7.3.0",
     "material-ui": "^0.17.3",
     "mongoose": "^4.6.6",
