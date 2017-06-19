@@ -17,6 +17,13 @@ export async function findAndCount(
     sort = null,
     populate = null
 ) {
+    if(Object.keys(filter).length > 0) {
+        for(let key in Object.keys(filter)) {
+            if(filter[key].length > 0) {
+                filter[key] = {'$in': filter[key]};
+            }
+        }
+    }
     const [count, data] = await Promise.all([
         this.count(filter),
         this.find(filter, null, skipLimit).sort(sort).populate(populate).exec()
