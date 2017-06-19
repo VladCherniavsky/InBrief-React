@@ -39,7 +39,7 @@ yarn  run build or npm  run build
 
 * code quality tool: ESLint
 
-:bulb:  *You can\'t commit if you have code style error  or tests failed*
+:bulb:  *You can\'t commit if you have code style errors  or test failed*
 
 
 ## Used: 
