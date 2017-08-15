@@ -15,8 +15,14 @@ export const add = (req, res, next) => {
 
 
 export const getAll = (req, res, next) => {
+    console.log('req.query', req.query);
+    const searchQuery = {};
+    if(req.query.tag) {
+        searchQuery.tags = {$in: [req.query.tag]};
+    }
+
     return Link
-        .findAndCount(req.query, null, null, 'userId')
+        .findAndCount(searchQuery, null, null, 'userId')
         .then((data)=> res.json(data))
         .catch(next);
 };

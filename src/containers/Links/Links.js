@@ -46,7 +46,7 @@ class Links extends React.Component {
         this.props.actions.boundGetLinks();
     }
     componentWillReceiveProps(nextProps) {
-        console.log('ConfirmWindow', this.refs.confirmWindow.handleOpen('Delete', 'Are you sure?'));
+        // console.log('ConfirmWindow', this.refs.confirmWindow.handleOpen('Delete', 'Are you sure?'));
         this.setState({
             links: nextProps.links.data,
             count: nextProps.links.count
@@ -59,6 +59,8 @@ class Links extends React.Component {
         });
     }
     filter(data, filterVal) {
+        console.log('data', data);
+        console.log('filterVal', filterVal);
         return () => {
             ::this.addFilter(filterVal);
             this.props.actions.boundGetLinks(data);
