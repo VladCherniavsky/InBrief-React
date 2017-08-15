@@ -22,24 +22,33 @@ const Chipp = class ChipComponent extends React.Component {
     }
 
     handleRequestDelete(key) {
-        if (key === 3) {
-            return;
-        }
-
         this.chipData = this.state.chipData;
         const chipToDelete = this.chipData.map((chip) => chip.key).indexOf(key);
+        this.props.removeItem(this.chipData[chipToDelete]);
         this.chipData.splice(chipToDelete, 1);
         this.setState({chipData: this.chipData});
     }
 
     handleRequestAdd(data) {
-        const chipDataLength = this.state.chipData.length;
-        const chipdata = [
-            ...this.state.chipData,
-            {key: chipDataLength, label: data}
-            ];
+        if(data) {
+            const dataExist = this.state.chipData.filter((item) => {
+                return item.label === data.label;
+            });
+            if(!(dataExist.length > 0)) {
+                const chipDataLength = this.state.chipData.length;
+                const chipdata = [
+                    ...this.state.chipData,
+                    {
+                        key: chipDataLength,
+                        label: data.label,
+                        propName: data.propName,
+                        value: data.value
+                    }
+                ];
 
-        this.setState({chipData: chipdata});
+                this.setState({chipData: chipdata});
+            }
+        }
     }
 
 

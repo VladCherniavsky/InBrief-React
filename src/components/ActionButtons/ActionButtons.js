@@ -8,15 +8,16 @@ import Info from 'material-ui/svg-icons/action/info';
 import IconButton from 'material-ui/IconButton';
 
 const ActionButtons = (props) => {
+    const {infoClick, editClick, removeclick} = props;
     return (
         <div>
-            <IconButton onTouchTap={props.infoClick}>
+            <IconButton onTouchTap={infoClick}>
                 <Info/>
             </IconButton>
-            <IconButton onTouchTap={props.editClick}>
+            <IconButton onTouchTap={editClick}>
                 <ModeEditIcon/>
             </IconButton>
-            <IconButton onTouchTap={props.removeclick}>
+            <IconButton onTouchTap={removeclick}>
                 <TrashIcon/>
             </IconButton>
         </div>

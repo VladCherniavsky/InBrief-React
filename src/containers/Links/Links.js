@@ -33,7 +33,13 @@ const columnNames = [
 class Links extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {links: []};
+        this.state = {
+            links: [],
+            filter: {
+                userId: [],
+                tag: []
+            }
+        };
     }
 
     updateTable() {
@@ -62,13 +68,50 @@ class Links extends React.Component {
         console.log('data', data);
         console.log('filterVal', filterVal);
         return () => {
-            ::this.addFilter(filterVal);
-            this.props.actions.boundGetLinks(data);
+            const key = Object.keys(data)[0];
+            if(Object.keys(data).length > 0) {
+                if(!this.state.filter[key].includes(data[key])) {
+                    const filter = {
+                        ...this.state.filter
+                    };
+                    filter[key].push(data[key]);
+
+                    this.setState({filter: filter});
+                }
+            }
+            const itemChip = {
+                label: filterVal,
+                value: data[key],
+                propName: key
+            };
+            ::this.addFilter(itemChip);
+            this.props.actions.boundGetLinks(this.state.filter);
+        };
+    }
+    onClickInfo(linkId) {
+        return () => {
+        };
+    }
+    onClickEdit(linkId) {
+        return () => {
+        };
+    }
+    onClickDelete(linkId) {
+        return () => {
+            this.refs.confirmWindow.handleOpen('Delete', 'Are you sure?');
         };
     }
 
     addFilter(data) {
-        this.refs.chip.handleRequestAdd(data);
+        data
+            ? this.refs.chip.handleRequestAdd(data)
+            : null;
+    }
+    removeItemFromChip(data) {
+        const stateFilter = this.state.filter;
+        const indexToDelete = stateFilter[data.propName].indexOf(data.value);
+        stateFilter[data.propName].splice(indexToDelete, 1);
+        this.setState({...this.state, filter: stateFilter});
     }
 
     render() {
@@ -77,10 +120,15 @@ class Links extends React.Component {
             <div className={styles.wrapper}>
                 <h1>Links Table</h1>
                 <ConfirmWindow ref="confirmWindow"/>
-                <Chip ref="chip"></Chip>
+                <Chip ref="chip"
+                      removeItem={::this.removeItemFromChip}>
+                </Chip>
                 <LinksTable data={::this.mapData()}
                             updateTable={::this.updateTable}
                             onClickFilter={::this.filter}
+                            onClickInfo={::this.onClickInfo}
+                            onClickEdit={::this.onClickEdit}
+                            onClickDelete={::this.onClickDelete}
                             columnNames={columnNames}>
                 </LinksTable>
             </div>

@@ -7,7 +7,7 @@ import {setNewToken} from '../../actions/action_creators/login';
 import toastr from 'toastr';
 
 const instance = Axios.create({
-    baseURL: 'http://localhost:3000/'
+    baseURL: location.origin
 });
 
 
