@@ -17,11 +17,14 @@
     "build:html": "babel-node tools/buildHtml.js",
     "prebuild": "npm-run-all clean-dist  build:html",
     "build": "babel-node tools/build.js",
-    "postbuild": "cross-env NODE_ENV=production babel-node server/app.js"
+    "postbuild": "cross-env NODE_ENV=production babel-node server/app.js",
+    "stylelint": "stylelint \"src/**/*.scss\""
+
   },
   "pre-commit": [
     "lint",
-    "test"
+    "test",
+    "stylelint"
   ],
   "license": "MIT",
   "dependencies": {
@@ -36,7 +39,6 @@
     "body-parser": "^1.16.1",
     "bootstrap": "3.3.6",
     "copy-to-clipboard": "^3.0.6",
-    "cross-env": "^1.0.7",
     "eslint": "^3.14.1",
     "eslint-config-google": "^0.7.1",
     "eslint-plugin-prefer-bind-operator": "^0.0.4",
@@ -72,6 +74,7 @@
     "redux-thunk": "2.0.1",
     "resolve-url-loader": "^1.6.1",
     "shortid": "^2.2.8",
+    "stylelint": "^8.0.0",
     "toastr": "2.1.2"
   },
   "devDependencies": {
@@ -98,7 +101,7 @@
     "jsdom": "8.5.0",
     "mocha": "^3.3.0",
     "nock": "8.0.0",
-    "node-sass": "^3.11.2",
+    "node-sass": "^4.5.3",
     "npm-run-all": "1.8.0",
     "open": "0.0.5",
     "redux-immutable-state-invariant": "1.2.3",
