@@ -1,6 +1,6 @@
 {
     "rules": {
-        "string-quotes": "double",
+        "string-quotes": "single",
         "block-no-empty": null,
         "color-no-invalid-hex": true,
         "comment-empty-line-before": [ "always", {
@@ -12,6 +12,6 @@
             "except": ["first-nested"],
             "ignore": ["after-comment"]
         } ],
-        "unit-whitelist": ["em", "rem", "%", "s"]
+        "unit-whitelist": ["em", "rem", "%", "s", "px", "vh"]
     }
 }
