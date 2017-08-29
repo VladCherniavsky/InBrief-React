@@ -65,8 +65,6 @@ class Links extends React.Component {
         });
     }
     filter(data, filterVal) {
-        console.log('data', data);
-        console.log('filterVal', filterVal);
         return () => {
             const key = Object.keys(data)[0];
             if(Object.keys(data).length > 0) {
