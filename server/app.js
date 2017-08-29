@@ -14,6 +14,7 @@ import routers from './routers';
 import * as common from './middlewares/common';
 import _ from 'lodash';
 import checkAccessMiddleware from './middlewares/checkAccess';
+import cors from 'cors';
 
 const app = express();
 const compiler = webpack(webpackConfig);
@@ -25,6 +26,7 @@ process.env.NODE_ENV === 'development'
     ? webpackMiddleware(app, compiler, webpackConfig)
     : app.use(compression());
 app.use(bodyParser.urlencoded({extended: false}));
+ //app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, config.get('static'))));
 app.use(checkAccessMiddleware);
