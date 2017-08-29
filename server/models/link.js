@@ -36,6 +36,7 @@ const linkSchema = new Schema({
             type: String,
             trim: true
         }],
+        lowercase: true,
         default: ['qwe', 'qwe', 'qwe']
     },
     clicks: {

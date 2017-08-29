@@ -2,10 +2,10 @@
  * Created by Vlad on 4/30/2017.
  */
 import express from 'express';
-import {add} from '../controllers/link.controller';
+import {getAll} from '../controllers/user.controller';
 
 const router = express.Router();
 
-router.post('/link', add);
+router.get('/users', getAll);
 
 export default router;

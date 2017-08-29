@@ -7,6 +7,7 @@
     "prestart": "babel-node tools/startMessage.js",
     "start": "npm-run-all --parallel test start:nodemon lint:watch",
     "start:nodemon": "cross-env NODE_ENV=development nodemon --config nodemon_config.json server/app.js --exec babel-node",
+    "start:backend": "cross-env NODE_ENV=development nodemon server/app.js --exec babel-node",
     "open:src": "cross-env NODE_ENV=development babel-node server/app.js",
     "lint": "node_modules/.bin/esw --fix",
     "lint:watch": "npm run lint -- --watch",

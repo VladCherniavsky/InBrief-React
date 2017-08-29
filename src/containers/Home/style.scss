@@ -1,17 +1,17 @@
-{}
-
 .wrapper {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .alignTop {
     width: 70%;
     display: inline-flex;
     justify-content: center;
     align-items: center;
 }
+
 .mainContent {
     display: flex;
     align-items: center;
@@ -23,12 +23,12 @@
     align-self: flex-start;
     border-radius: 10px;
 }
+
 .centered {
     align-self: center;
 }
 
 @media only screen and (max-width : 768px) {
-
     .mainContent {
         margin-top: 30%;
     }
