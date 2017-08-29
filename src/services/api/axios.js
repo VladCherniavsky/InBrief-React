@@ -15,7 +15,7 @@ instance.interceptors.request.use((config) => {
     const store = getStore();
     if(store) {
         const state = store.getState().LoginReducer;
-        const token = state.token || localStorage.getItem('token');
+        const token = state.token;
         token ? config.headers['x-access-token'] = token : null;
     }
     return config;

@@ -17,7 +17,11 @@ export function loginReducer(state = initialState, action) {
         case types.LOGIN_SUCCESS:
             return {...state, isLogged: true, ...action.payload};
         case types.LOGIN_FAIL:
-            return {...state, isLogged: false, error: action.payload};
+            return {...state,
+                isLogged: false,
+                error: action.payload,
+                token: ''
+            };
         case types.LOGIN_CLEAR_ERROR:
             return {...state, error: null};
         case types.LOGIN_NEW_TOKEN:
