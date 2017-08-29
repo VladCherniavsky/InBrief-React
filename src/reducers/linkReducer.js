@@ -6,7 +6,8 @@ import * as types from '../actions/index';
 export const initialState = {
     loading: false,
     error: null,
-    link: null
+    link: null,
+    links: {}
 };
 
 export function linkReducer(state = initialState, action) {

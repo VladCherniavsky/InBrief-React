@@ -2,6 +2,7 @@
  * Created by Vlad on 4/22/2017.
  */
 import Link from '../models/link';
+import {getQuery} from '../libs/helper';
 
 export const add = (req, res, next) => {
     const link = global._.pick(req.body, Object.keys(req.body));
@@ -22,7 +23,8 @@ export const getAll = (req, res, next) => {
     }
 
     return Link
-        .findAndCount(searchQuery, null, null, 'userId')
+        .findAndCount(getQuery(req), null, null, 'userId')
+
         .then((data)=> res.json(data))
         .catch(next);
 };

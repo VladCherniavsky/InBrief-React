@@ -50,6 +50,9 @@ const Chipp = class ChipComponent extends React.Component {
             }
         }
     }
+    test = () => {
+
+    }
 
 
     renderChip(data) {

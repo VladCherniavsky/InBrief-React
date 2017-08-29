@@ -1,6 +1,7 @@
 /**
  * Created by Vlad on 4/30/2017.
  */
+import {isArray} from 'lodash';
 
 /**
  * Extension method for mongoose model
@@ -17,13 +18,6 @@ export async function findAndCount(
     sort = null,
     populate = null
 ) {
-    if(Object.keys(filter).length > 0) {
-        for(let key in Object.keys(filter)) {
-            if(filter[key].length > 0) {
-                filter[key] = {'$in': filter[key]};
-            }
-        }
-    }
     const [count, data] = await Promise.all([
         this.count(filter),
         this.find(filter, null, skipLimit).sort(sort).populate(populate).exec()
@@ -33,3 +27,17 @@ export async function findAndCount(
         data
     };
 }
+
+export const getQuery = (req) => {
+    return Object.keys(req.query).length > 0 ? generateQueryObj(req.query) : {};
+
+    function generateQueryObj(query) {
+        return Object.keys(query)
+            .reduce((accumulator, key) => {
+            isArray(query[key])
+                 ? accumulator[key] = {'$all': query[key]}
+                 : accumulator[key] = query[key];
+             return accumulator;
+            }, {});
+    }
+};

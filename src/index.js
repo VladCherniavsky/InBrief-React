@@ -14,7 +14,6 @@ import {sendLoginRequest} from './services/api/login';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
 import '../node_modules/semantic-ui-menu/menu.min.css';
-import './styles/style.scss';
 
 const muiTheme = getMuiTheme({
     palette: {
