@@ -26,11 +26,12 @@ process.env.NODE_ENV === 'development'
     ? webpackMiddleware(app, compiler, webpackConfig)
     : app.use(compression());
 app.use(bodyParser.urlencoded({extended: false}));
- //app.use(cors());
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, config.get('static'))));
 app.use(checkAccessMiddleware);
 app.use('/api', routers);
+app.get('*', common.sendIndexHtml);
 app.use(common.errorHandler);
 dbConnection.once('open', () => {
     app.listen(config.get('port'), common.listen);

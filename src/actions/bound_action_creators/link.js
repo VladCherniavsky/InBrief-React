@@ -44,6 +44,8 @@ export const boundGetLinks = (data) => (
 
         return getAllLinks(data)
             .then((res) => dispatch(linkGetAllSuccess(res.data)))
-            .catch((err) => dispatch(linkGetAllFail(err.response.data)));
+            .catch((err) => {
+                    dispatch(linkGetAllFail(err.response.data));
+            });
     }
 );

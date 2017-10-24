@@ -18,7 +18,9 @@ export const add = (req, res, next) => {
 export const getAll = (req, res, next) => {
     return Link
         .findAndCount(getQuery(req), null, null, 'userId')
-        .then((data)=> res.json(data))
+        .then((data)=> {
+            return res.json(data);
+        })
         .catch(next);
 };
 
